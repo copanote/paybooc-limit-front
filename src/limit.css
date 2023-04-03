@@ -1,0 +1,505 @@
+/*** reset ***/
+body {line-height: 1;}
+
+/* input */
+.chkSingle{position: relative; display: inline-block;}
+.chkSingle input{position:absolute; padding:0; margin:0; top:0; left:0; width: 100%; height: 100%; -webkit-appearance: none; appearance: none;}
+.chkSingle label{display:block; padding-left:31px; font-size: 15px; color:#2e3136; line-height: 22.2px;}
+.chkSingle label::before{content:''; position:absolute; left:0; display:inline-block; width:22px; height: 22px; border-radius: 50%; vertical-align: middle; background: url(https://isrnd.bccard.com:34443/mobile/front/mapp/assets/images/renew21/check_icons.png) no-repeat top/100%;}
+.chkSingle input:checked + label::before{background-position: 0 -22px;}
+.chkSingle input:disabled + label::before{background-position: 0 -44px;}
+
+/*** [ my-vr01 ] 공통 ***/
+.renew01-header.my-card-header01 {background-color:#f9f9fa;}
+.renew01-header.white {background-color:transparent;}
+.renew01-header.white .btn-back {background-image:url('https://isrnd.bccard.com:34443/mobile/front/mapp/assets/images/renew/arr_white_58x49_l.png');}
+.renew01-header.white .tit {color:#fff;}
+.renew01-header.white01 .btn-back {background-image:url('https://isrnd.bccard.com:34443/mobile/front/mapp/assets/images/renew/arr_black_58x49_l.png');}
+.renew01-header.white01 .tit {color:#000;}
+
+.my-vr01 {min-height:100%; padding:56px 0px 0 0; color:#424242; font-family:'Spoqa Han Sans'; font-weight:400; line-height:1.5; -webkit-box-sizing:border-box; -moz-box-sizing:border-box; box-sizing:border-box;}
+.my-vr01 img{width:100%; max-width: 100%;}
+.my-vr01 .sec{padding-left:24px; padding-right:24px;}
+.my-vr01.--gray{background-color: #f9f9fa;}
+.my-vr01.--white{background-color: #fff;}
+.my-vr01 .--gray{background-color: #f9f9fa!important;}
+.my-vr01 .--white{background-color: #fff!important;}
+/* 툴팁추가 */
+.my-vr01 .tooltip{display: inline-block; vertical-align: middle; z-index:100;}
+.my-vr01 .tooltip .tip-open{position:relative; display: block; width: 16px; height: 16px; border: 0; font-size: 0; vertical-align: top; color: transparent; vertical-align: middle; background: url(https://isrnd.bccard.com:34443/mobile/front/mapp/assets/images/renew/my/icon_info@16x2.png) no-repeat center/100%;}
+.my-vr01 .tooltip .tip-close{position:absolute; top:12px; right:12px; display: inline-block; width: 32px; height: 32px; border: 0; font-size: 0; vertical-align: top; color: transparent; vertical-align: middle; background: url(https://isrnd.bccard.com:34443/mobile/front/mapp/assets/images/renew/my/icon_close@13x2.png) no-repeat center/13px;}
+.my-vr01 .tooltip .tip-cont{display:none; position:absolute; margin-top: 11px; left:-4px; right:-4px; min-width: 200px; padding:20px 24px; font-size:12px; color:#fff; border-radius: 20px; background: rgba(64,66,76,0.9); box-sizing: border-box; z-index: 100;}
+.my-vr01 .tooltip .tip-cont .tit{padding-right:20px; margin-bottom:8px; font-size:16px; font-weight: 700; color:#fff; line-height: 23.68px;}
+.my-vr01 .tooltip .tip-cont .txt{position: relative; font-size:15px; font-weight: 400; color:#fff; line-height: 22px;}
+.my-vr01 .tooltip .tip-cont .txt.dot{padding-left: 11px;}
+.my-vr01 .tooltip .tip-cont .txt.dot::before{content:''; position:absolute; left: 0; top:9px; display: block; width:3px; height:3px; background-color: #9b9b9b; border-radius: 50%;}
+.my-vr01 .tooltip .tip-open:before {display:none; content:''; position:absolute; left:50%; top:13px; width:0; height:0; border:6px solid transparent; border-bottom-color:rgba(64,66,76,0.9); border-bottom-width:8px; transform: translate(-50% );}
+.my-vr01 .tooltip.on .tip-open:before{display: block;}
+.my-vr01 .tooltip.on .tip-cont{display: block;}
+/*** [ my-vr01 ] 팝업공통 ***/
+.my-vr01 ~ .lpop-mask {display:block; display:none; overflow:hidden; position:fixed; left:0; right:0; top:0; bottom:0; z-index:230; background-color:rgba(0,0,0,0.6);}
+.my-vr01 ~ .lpop--wrap {display:block; display:none; overflow:hidden; position:fixed; left:0; right:0; top:0; bottom:0; z-index:995;}
+.my-vr01 ~ .lpop--wrap .lpop-inner {position:absolute; left:0; bottom:0; width:100%; max-height:calc(100% - 52px);}
+.my-vr01 ~ .lpop--wrap .select-lpop {height:100%; font-family:'Spoqa Han Sans'; font-weight:400;}
+.my-vr01 ~ .lpop--wrap .select-lpop .lpop-header {position:relative; padding:20px 54px 19px 24px; background-color:#fff; border-radius:20px 20px 0 0;}
+.my-vr01 ~ .lpop--wrap .select-lpop .lpop-header:after {content:''; position:absolute; bottom:0; left:0; right:0; height:1px; background-color:rgba(0,0,0,0.06);}
+.my-vr01 ~ .lpop--wrap .select-lpop .lpop-header.no-title:after {height:0;}
+.my-vr01 ~ .lpop--wrap .select-lpop .lpop-header.no-line {border-bottom: 0;}
+.my-vr01 ~ .lpop--wrap .select-lpop .lpop-header .lpop-tit {color:#000; font-size:17px; font-family:inherit; font-weight:normal; line-height:25px;}
+.my-vr01 ~ .lpop--wrap .select-lpop .lpop-header .btn-close {display:block; position:absolute; right:14px; top:50%; width:40px; height:40px; margin-top:-20px; text-indent:-9999px; border:none; background:url('https://isrnd.bccard.com:34443/mobile/front/mapp/assets/images/renew//mark_x_black_49x49.png') center center / 16px 16px no-repeat;}
+.my-vr01 ~ .lpop--wrap .select-lpop .lpop-cont {overflow-y:scroll; height:auto; max-height:100%; padding:24px; background-color:#fff; box-sizing:border-box; transition:max-height .4s;}
+.my-vr01 ~ .lpop--wrap .select-lpop .lpop-cont.pdt0 {padding-top:0;}
+.my-vr01 ~ .lpop--wrap .select-lpop .lpop-cont.pdtb0 {padding-top:0; padding-bottom:0;}
+.my-vr01 ~ .lpop--wrap .select-lpop .lpop-cont.select {padding:0;}
+.my-vr01 ~ .lpop--wrap .select-lpop .no-title + .lpop-cont {padding-top:0;}
+.my-vr01 ~ .lpop--wrap .select-lpop .cont-inner-fixed-wrap {padding-bottom:70px;}
+.my-vr01 ~ .lpop--wrap .lpop-foot {position:relative; padding:12px 20px; background-color:#fff;}
+.my-vr01 ~ .lpop--wrap .lpop-foot:before {content:'';height:20px; position:absolute; top:-20px; left:0; right:0; background:linear-gradient(180deg, rgba(255,255,255,0) 0%, #fff 100%);}
+.my-vr01 ~ .lpop--wrap.hide-visible {visibility:hidden;}
+.my-vr01 ~ .lpop--wrap .select-lpop .btn--submit {color:#fff; background-color:#fa5273;}
+.my-vr01 ~ .lpop--wrap .select-lpop .btn--submit:active {background-color:#f27c8e;}
+.my-vr01 ~ .lpop--wrap .select-lpop .btn--submit.disabled {color:#bdbdbd; background-color:#f1f4f7;}
+.my-vr01 ~ .lpop--wrap .select-lpop .btn--submit[disabled] {color:#bdbdbd; background-color:#f1f4f7;}
+.my-vr01 ~ .lpop--wrap .select-lpop .btn--submit-gray {color:#212121; background-color:#f1f4f7;}
+.my-vr01 ~ .lpop--wrap .select-lpop .btn--submit-gray:active {background-color:#f4f5f7;}
+.my-vr01 ~ .lpop--wrap .select-lpop .btn--submit-gray.disabled {color:#bdbdbd; background-color:#f1f4f7;}
+.my-vr01 ~ .lpop--wrap .select-lpop .btn--submit-white {color:#212121; background-color:#fff; border:1px solid #888;}
+.my-vr01 ~ .lpop--wrap .select-lpop .btn--submit-white:active {background-color:#f2f2f2;}
+.my-vr01 ~ .lpop--wrap .select-lpop .btn--submit-white.disabled {color:#bdbdbd; background-color:#f1f4f7; border-color:#ddd;}
+.my-vr01 ~ .lpop--wrap .select-lpop [class*="btn--submit"].full {width:100%; height:52px; font-size:17px; border-radius:26px;}
+
+
+/*** 카드이용한도 page ***/
+.card-limit-area .sec:first-of-type{padding-top: 20px;}
+.card-limit-area .card-limit-box01 .card-head{position: relative; 
+    -webkit-display: flex; -moz-display: flex; -ms-display: flex; display: flex;
+    -webkit-align-items: center; align-items: center; 
+    -webkit-justify-content: space-between; -moz-justify-content: space-between; justify-content: space-between;
+}
+.card-limit-area .card-limit-box01 .card-head .c-name{font-size: 19px; font-weight: 700; color:#000000; line-height: 28.12px;}
+.card-limit-area .card-limit-box01 .card-head .c-name .ico{margin-right: 8px; display:inline-block; width:24px; height: 24px; vertical-align: middle; margin-top: -3px;}
+.card-limit-area .card-limit-box01 .card-head .c-date{font-size: 14px; font-weight: 400; color:#8F989C; line-height: 20.72px; text-align: right;}
+.card-limit-area .card-limit-box01 .card-head + .card-cont{margin-top: 29px;}
+.card-limit-area .card-limit-box01 .card-cont{position: relative; margin-left:-4px; margin-right:-4px; padding:36px 24px; border-radius: 14px; background-color: #fff; 
+    -webkit-box-shadow: 0px 6px 16px rgba(15,21,34,0.04);
+    -moz-box-shadow: 0px 6px 16px rgba(15,21,34,0.04);
+    box-shadow: 0px 6px 16px rgba(15,21,34,0.04);
+}
+.card-limit-area .card-limit-box01 .card-info + .card-info{margin-top: 24px;}
+.card-limit-area .card-limit-box01 .card-info .c-tit{font-size: 16px; font-weight: 700; color:#2e3136; line-height: 24px;}
+.card-limit-area .card-limit-box01 .card-info .c-tit + .c-list{margin-top: 10px;}
+.card-limit-area .card-limit-box01 .card-info .c-list > div{
+    -webkit-display: flex; -moz-display: flex; -ms-display: flex; display: flex;
+    -webkit-align-items: center; align-items: center; 
+    -webkit-justify-content: space-between; -moz-justify-content: space-between; justify-content: space-between;
+}
+.card-limit-area .card-limit-box01 .card-info .c-list > div + div{margin-top: 5px;}
+.card-limit-area .card-limit-box01 .card-info .c-list > div .amount{font-size: 17px; font-weight: 700; color:#000; line-height: 25px;}
+.card-limit-area .card-limit-box01 .card-info .c-list > div .unit{margin-left:2px; font-size: 13px; font-weight: 400; color:#000; vertical-align: text-bottom;}
+.card-limit-area .card-limit-box01 .card-info .c-list{font-size: 15px; font-weight: 400; color:#666c76; line-height: 24px;}
+.card-limit-area .card-limit-box01 .card-info + .card-link {margin-top: 54px;}
+.card-limit-area .card-limit-box01 .card-link {-webkit-display: flex; -moz-display: flex; -ms-display: flex; display: flex;}
+.card-limit-area .card-limit-box01 .card-link > .link{position:relative; display: block; font-size: 14px; color:#293952; line-height: 16px; text-align: center; cursor: pointer;
+    -webkit-flex: 0 0 33.333%; 
+    -moz-flex: 0 0 33.333%; ; 
+    -ms-flex: 0 0 33.333%; 
+    flex: 0 0 33.333%;
+}
+.card-limit-area .card-limit-box01 .card-link > .link a{display: block; color: inherit;}
+.card-limit-area .card-limit-box01 .card-link [class^='ico-']{display: block; margin:0 auto 12px; width: 26px; height: 26px; background-repeat: no-repeat; background-position: center center; background-size: contain;}
+.card-limit-area .card-limit-box01 .card-link .ico-limit{background-image: url('https://isrnd.bccard.com:34443/mobile/front/mapp/assets/images/renew/my/icon-limit@28x3.png');}
+.card-limit-area .card-limit-box01 .card-link .ico-payment{background-image: url('https://isrnd.bccard.com:34443/mobile/front/mapp/assets/images/renew/my/icon-payment@28x3.png');}
+.card-limit-area .card-limit-box01 .card-link .ico-finance{background-image: url('https://isrnd.bccard.com:34443/mobile/front/mapp/assets/images/renew/my/icon-finance@28x3.png');}
+.card-limit-area .card-limit-box01 .bubble-tip{position: absolute; left:50%; top:-36px; text-align: center; padding:5.5px 11px; font-size: 11px; font-weight: 700; color: #fff; border-radius: 100px; white-space: nowrap; background-color: #426aac;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-50%);
+}
+.card-limit-area .card-limit-box01 .bubble-tip:after{content:''; display: block; position:absolute; bottom:-6px; right:15px; width: 11px; height: 6px; background: url('https://isrnd.bccard.com:34443/mobile/front/mapp/assets/images/renew/my/limit-tip-edge.svg') center center no-repeat; background-size: contain;}
+.card-limit-area .card-limit-box01 .bubble-alram .ico-alram{display: inline-block; margin-right: 6px; margin-top: -2px; width:16px; height: 16px; vertical-align: middle; background: url('https://isrnd.bccard.com:34443/mobile/front/mapp/assets/images/renew/my/icon-alram@16x3.png') center center no-repeat; background-size: contain;}
+.card-limit-area .card-limit-box01 .bubble-alram:after{content:''; display: block; position:absolute; bottom:-11px; left:30px; width: 26px; height: 24px; background: url('https://isrnd.bccard.com:34443/mobile/front/mapp/assets/images/renew/my/limit-alram-edge.svg') center center no-repeat; background-size: contain;}
+.card-limit-area .card-limit-box01 .bubble-alram.is-active{top:-20px; opacity: 1; visibility: visible; pointer-events: auto;}
+.card-limit-area .card-limit-box01 + .card-limit-box02{margin-top: 36px;}
+.card-limit-area .card-limit-box02 + .card-limit-box02{margin-top:30px; padding-top: 30px; border-top: 1px solid #ececec;}
+.card-limit-area .card-limit-box02 .card-head{position: relative; 
+    -webkit-display: flex; -moz-display: flex; -ms-display: flex; display: flex;
+    -webkit-align-items: center; align-items: center; 
+    -webkit-justify-content: space-between; -moz-justify-content: space-between; justify-content: space-between;
+}
+.card-limit-area .card-limit-box02 .card-head .c-name{font-size: 19px; font-weight: 700; color:#000000; line-height: 28.12px;}
+.card-limit-area .card-limit-box02 .card-head .c-name .ico{display:inline-block; width:24px; height: 24px; vertical-align: middle; margin-top: -2px;}
+.card-limit-area .card-limit-box02 .card-head .c-date{font-size: 14px; font-weight: 400; color:#8F989C; line-height: 20.72px; text-align: right;}
+.card-limit-area .card-limit-box02 .card-head + .card-cont{margin-top: 29px;}
+.card-limit-area .card-limit-box02{position:relative; padding-left: 30px;}
+.card-limit-area .card-limit-box02 .card-head .c-name .ico{position: absolute; left:-30px; top: 4px; width: 20px; margin-top: 0;}
+.card-limit-area .card-limit-box02 .card-head + .card-info{margin-top: 17px;}
+.card-limit-area .card-limit-box02 + .card-limit-cont.type02{margin-top: 30px; padding-top: 30px; border-top:1px solid #ececec;}
+.card-limit-area .card-limit-box02 .card-info .c-list > div{
+    -webkit-display: flex; -moz-display: flex; -ms-display: flex; display: flex;
+    -webkit-align-items: center; align-items: center; 
+    -webkit-justify-content: space-between; -moz-justify-content: space-between; justify-content: space-between;
+}
+.card-limit-area .card-limit-box02 .card-info .c-list > div + div{margin-top: 5px;}
+.card-limit-area .card-limit-box02 .card-info .c-list > div .amount{font-size: 17px; font-weight: 700; color:#000; line-height: 25px;}
+.card-limit-area .card-limit-box02 .card-info .c-list > div .unit{margin-left:2px; font-size: 13px; font-weight: 400; color:#000; vertical-align: text-bottom;}
+.card-limit-area .card-limit-box02 .card-info .c-list{font-size: 15px; font-weight: 400; color:#424242; line-height: 24px;}
+.card-limit-area .card-limit-box02:last-of-type{padding-bottom: 100px;}
+.card-limit-area .card-limit-null {margin-bottom: 0; padding:198px 0 86px; text-align:center; word-break: keep-all; background:#f9f9fa url('https://isrnd.bccard.com:34443/mobile/front/mapp/assets/images/renew/my/ico_error01.png') no-repeat center 55px; background-size:114px 105px; font-size:15px;}
+.card-limit-area .card-limit-box01 .bubble-alram{position: absolute; left:20px; top:0; opacity: 0; text-align: center; padding:10px 21px; font-size: 13px; font-weight: 700; color: #455672; line-height: 20px; border-radius: 100px; white-space: nowrap; background-color: #e8f3fa;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55); transition-delay: 0.3s;
+}
+.card-limit-area .drop-card-wrap{margin:0 -24px}
+.card-limit-area .drop-cont .cont-top{color:#424242;}
+.card-limit-area .drop-cont {border-top: 1px solid rgba(0,0,0,0.06);}
+.card-limit-area .drop-cont .cont-top {display:block; position:relative; width:100%; padding:22px 60px 22px 24px; color:#424242; font-size:16px; font-weight:700; text-align:left; font-weight:normal;}
+.card-limit-area .drop-cont .cont-top:after {display:block; content:''; position:absolute; right:29px; top:50%; width:10px; height:7px; margin-top:-4px; background:url(https://isrnd.bccard.com:34443/mobile/front/mapp/assets/images/renew/arr_gray_30x21_u.png) 0 0 / 10px auto no-repeat;}
+.card-limit-area .drop-cont .cont-top.close:after {background-image:url(https://isrnd.bccard.com:34443/mobile/front/mapp/assets/images/renew/arr_gray_30x21_d.png);}
+.card-limit-area .drop-cont .cont-body {padding:0 24px 32px 24px; color:#424242; font-size:13px;}
+
+
+/*** 이용한도관리 page ***/
+.manage-limit-area .total-limit-manage {padding-top: 19px; padding-bottom: 40px;}
+.manage-limit-area .total-limit-box .title-wrap {display:table; width:100%;}
+.manage-limit-area .total-limit-box .title-wrap .title {display:table-cell; color:#212121; font-size:18px; line-height: 26.64px;}
+.manage-limit-area .total-limit-box .title-wrap .date {display:table-cell; color:#8f989c; font-size:14px; line-height: 24px; text-align:right;}
+.manage-limit-area .total-limit-box .text-amount {margin-top:5px;}
+.manage-limit-area .total-limit-box .text-amount strong {padding-right:5px; color:#f43347; font-size:28px; font-weight:700; line-height: 41.44px; vertical-align: middle;}
+.manage-limit-area .total-limit-box .text-amount .unit{position:relative; top:1px; font-size:20px; color:#f43347; line-height: 30px; vertical-align: middle;}
+.manage-limit-area .total-limit-box .text-badge {margin-top:2px; padding:0 1px; color:#1d2024; font-size:17px; line-height: 22px; 
+    background-color: #f5f790;
+    background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 51%, rgba(245,247,144,1) 41%, rgba(245,247,144,1) 100%);
+}
+.manage-limit-area .total-limit-box .text-badge strong {font-weight: 700;}
+.manage-limit-area .total-limit-box .text-guide {margin-top:10px; font-size:14px; color:#424242; line-height: 21px;}
+.manage-limit-area .total-limit-box .text-guide > li{position: relative;}
+.manage-limit-area .total-limit-box .text-guide .tooltip {margin-left: 2px; margin-top:-3px;}
+.manage-limit-area .total-limit-box + .total-limit-bnr,
+.manage-limit-area .total-limit-box + .total-limit-alram{margin-top: 26px;}
+.manage-limit-area .total-limit-summery + .total-limit-alram{margin-top: 26px;}
+.manage-limit-area .total-limit-summery{margin-top: 22px; padding-top:20px; border-top: 1px solid rgba(0,0,0,.06);}
+.manage-limit-area .total-limit-summery > li{display: flex; justify-content: space-between; font-size: 16px; color:#3a3e44; line-height: 23.68px;}
+.manage-limit-area .total-limit-summery > li + li{margin-top:12px;}
+.manage-limit-area .total-limit-summery > li > div{flex:auto 0 0;}
+.manage-limit-area .total-limit-summery > li > div:nth-child(1){text-align: left;}
+.manage-limit-area .total-limit-summery > li > div:nth-child(2){text-align: right;}
+.manage-limit-area .total-limit-summery .amount{display: block; margin-top: -3px; font-size: 18px; font-weight: 700; color:#000; line-height: 28px;}
+.manage-limit-area .total-limit-summery .amount .unit{margin-left:2px; font-size: 16px; font-weight: 400; color:#000; vertical-align: text-bottom;}
+.manage-limit-area .total-limit-summery .amount .htxt{font-size: 16px; font-weight: 700; color:#000; vertical-align: text-bottom;}
+.manage-limit-area .total-limit-summery .btn-limit{font-size: 16px; font-weight: 700; color:#45567e;}
+@media screen and (max-width: 320px){
+    .manage-limit-area .total-limit-summery > li > div:nth-child(1){width:35%;}
+}
+.manage-limit-area .total-limit-bnr{margin: 26px -4px 0; padding:21px 24px; background-color: #e8f3fa; border-radius: 14px;
+    -webkit-display: flex; -moz-display: flex; -ms-display: flex; display: flex;
+    -webkit-align-items: center; align-items: center; 
+    -webkit-justify-content: space-between; -moz-justify-content: space-between; justify-content: space-between;
+}
+.manage-limit-area .total-limit-summery .btn-limit::after{content:""; display: inline-block; margin-top: -2px; width:18px; height: 18px; vertical-align: middle; background: url(https://isrnd.bccard.com:34443/mobile/front/mapp/assets/images/renew/my/icon_arr_limit@10x2.png) center center/10px auto no-repeat; }
+.manage-limit-area .total-limit-bnr .txt{font-size:16px; color:#000; line-height: 23.68px; word-break: keep-all;}
+.manage-limit-area .total-limit-bnr .txt strong{font-weight: 700;}
+.manage-limit-area .total-limit-bnr .txt em{font-size:18px;}
+.manage-limit-area .total-limit-bnr .btn{padding:0 6px; margin-left: 5px; min-width: 105px; height:42px; font-size:15px; color:#fff; background-color: #6495b0; border-radius: 100px; white-space: nowrap;}
+.manage-limit-area .total-limit-bnr + .total-limit-alram{margin-top: 16px;}
+.manage-limit-area .total-limit-alram{margin:0 -4px; padding:19px 24px; background-color: #fff; border-radius: 14px;
+    -webkit-display: flex; -moz-display: flex; -ms-display: flex; display: flex;
+    -webkit-align-items: center; align-items: center; 
+    -webkit-justify-content: space-between; -moz-justify-content: space-between; justify-content: space-between;
+    -webkit-box-shadow: 0px 6px 16px rgba(15,21,34,0.04); -moz-box-shadow: 0px 6px 16px rgba(15,21,34,0.04); box-shadow: 0px 6px 16px rgba(15,21,34,0.04);
+}
+.manage-limit-area .alram-btn{margin-left: 10px;}
+.manage-limit-area .total-limit-alram .alram-txt{font-size:16px; color:#3a3e44; line-height: 22px; word-break: keep-all;}
+.manage-limit-area .total-limit-alram .alram-txt strong{font-size:18px; font-weight: 700;}
+.manage-limit-area .form-switch{position: relative; display:inline-block; position:relative; width:34px; height:14px;}
+.manage-limit-area .form-switch input[type=checkbox]{position: absolute; margin: 0; padding: 0; top: 0; left: 0; width: 100%; height: 100%; display: block; z-index: 1; 
+    -webkit-appearance: none ;
+    -moz-appearance: none ;
+    appearance: none 
+}
+.manage-limit-area .form-switch input + label{position:absolute; top: 0; left: 0; right: 0; bottom: 0; font-size: 0; z-index: 2;}
+.manage-limit-area .form-switch input + label:before {font-size: 0; content:''; position:absolute; top:0; left:0; right:0; bottom:0; width:34px; height:14px; border-radius:100px; background-color:rgba(34,31,31,0.26); z-index: 1;}
+.manage-limit-area .form-switch input + label:after{content:''; position: absolute; left: -1px; top: 50%; margin-top:-10px; color: transparent; font-size: 1px; width: 18px; height: 18px; background-color: #fff; border: 1px solid #dadada; border-radius: 100px; transition: left .5s; z-index: 2;}
+.manage-limit-area .form-switch input:checked + label:after{left:15px; background: #fa5273; border-color:#fa5273 ;}
+.manage-limit-area .form-switch input:checked + label:before  {background-color: #fa5273; opacity: 0.5;}
+.manage-limit-area .etc-limit-manage{padding-top: 44px; padding-bottom: 52px;}
+.manage-limit-area .etc-limit-manage .limit-info + .limit-info{margin-top: 48px;}
+.manage-limit-area .etc-limit-manage .limit-info .l-tit{font-size: 17px; font-weight: 700; color:#2e3136; line-height: 25px;}
+.manage-limit-area .etc-limit-manage .limit-info .l-tit + .l-list{margin-top: 15px;}
+.manage-limit-area .etc-limit-manage .limit-info .l-list > div{
+    -webkit-display: flex; -moz-display: flex; -ms-display: flex; display: flex;
+    -webkit-align-items: center; align-items: center; 
+    -webkit-justify-content: space-between; -moz-justify-content: space-between; justify-content: space-between;
+}
+.manage-limit-area .etc-limit-manage .limit-info .l-list > div + div{margin-top: 5px;}
+.manage-limit-area .etc-limit-manage .limit-info .l-list > div .amount{font-size: 17px; font-weight: 700; color:#000; line-height: 25px;}
+.manage-limit-area .etc-limit-manage .limit-info .l-list > div .unit{margin-left:2px; font-size: 13px; font-weight: 400; color:#2e3136; vertical-align: text-bottom;}
+.manage-limit-area .etc-limit-manage .limit-info .l-list > div.total{margin-top:11px; padding-top:11px; border-top: 1px solid #ececec;}
+.manage-limit-area .etc-limit-manage .limit-info .l-list{font-size: 16px; font-weight: 400; color:#666c76; line-height: 24px;}
+.manage-limit-area .etc-limit-manage .limit-info .l-btn1{margin:26px -4px 0; width:calc(100% + 8px); height: 53px; font-size: 16px; color:#293952; background-color: #f1f4f7; border-radius: 100px;}
+.manage-limit-area .etc-limit-manage .limit-info .l-btn2{margin:26px -4px 0; width:calc(100% + 8px); height: 53px; font-size: 16px; color:#1d2024; background-color: #fff; border: 1px solid #212121; border-radius: 100px;}
+.manage-limit-area .etc-limit-manage .limit-info .l-ps{position: relative; margin-top: 8px; padding-left:22px; font-size: 14px; color:#8f96a0;}
+.manage-limit-area .etc-limit-manage .limit-info .l-ps::before{content:''; position:absolute; left:0; top:3px; display: inline-block; width:16px; height: 16px; border-radius: 100%; background: url(https://isrnd.bccard.com:34443/mobile/front/mapp/assets/images/renew/my/ico_info.png) center center no-repeat; background-size: contain;}
+.manage-limit-area .etc-limit-manage .limit-info + .limit-link{margin-top: 30px;}
+.manage-limit-area .etc-limit-manage .limit-link .link{padding:18px 0; font-size: 16px; font-weight: 700; color:#2e3136; line-height: 24px; border-bottom: 1px solid #ececec;}
+.manage-limit-area .etc-limit-manage .limit-link .link a{position:relative; display: block; color: inherit; padding-right: 40px; min-height: 32px; 
+    -webkit-display: flex; -moz-display: flex; -ms-display: flex; display: flex;
+    -webkit-align-items: center; align-items: center; 
+}
+.manage-limit-area .etc-limit-manage .limit-link .link a::after{content:''; position:absolute; right:0; top:50%; margin-top:-16px; display: block; width:32px; height: 32px; font-size: 0; color:transparent; background: url(https://isrnd.bccard.com:34443/mobile/front/mapp/assets/images/renew/my/arr_black_48x48_r.png) center center no-repeat; background-size: 20px;}
+.manage-limit-area .etc-limit-manage .limit-ect{margin-top: 22px;}
+.manage-limit-area .etc-limit-manage .limit-ect .text-link{position:relative; font-size: 16px; font-weight: 400; color:#2e3136; line-height: 24px;}
+.manage-limit-area .etc-limit-manage .limit-ect .text-link::after{content:''; display: inline-block; width:16px; height: 16px; font-size: 0; color:transparent; margin-top: -2px; vertical-align: middle; background: url(https://isrnd.bccard.com:34443/mobile/front/mapp/assets/images/renew/my/arr_black_48x48_r.png) center center no-repeat; background-size: contain;}
+.manage-limit-area .etc-limit-manage .limit-ect p{margin-top:4px; font-size: 14px; font-weight: 400; color:#8f96a0; line-height: 22px;}
+/*----- 한도알림동의팝업 -----*/
+.lpop--wrap.lpop-alramAgreeGuide .select-lpop .lpop-cont{padding: 0; overflow-x: hidden;}
+.lpop--wrap.lpop-alramAgreeGuide .select-lpop .btn--submit{ font-weight: 700;}
+.lpop--wrap.lpop-alramAgreeGuide .select-lpop .btn--submit:disabled {color:#212121; background-color:#f1f4f7; font-weight: 700;}
+.lpop--wrap.lpop-alramAgreeGuide .limit-alram-box{padding:0 24px; text-align: center;}
+.lpop--wrap.lpop-alramAgreeGuide .alram-guide{position:relative; margin-bottom: 20px; padding-bottom: 150px; border-bottom:1px solid #ececec;}
+.lpop--wrap.lpop-alramAgreeGuide .alram-guide .tt{font-size:22px; color:#000; font-weight: 700; line-height: 32px;}
+.lpop--wrap.lpop-alramAgreeGuide .alram-guide .tx{margin-top:12px; font-size:17px; color:#212121; font-weight: 400; line-height: 25px;}
+.lpop--wrap.lpop-alramAgreeGuide .alram-guide::after{content:''; position:absolute; bottom:40px; left:50%; margin-left:-40px; display:block; width: 80px; height: 80px; background:url(https://isrnd.bccard.com:34443/mobile/front/mapp/assets/images/renew/my/icon-bell@79x3.png) center 90% no-repeat; background-size: contain;}
+.lpop--wrap.lpop-alramAgreeGuide .form-select-box{margin-bottom: 10px;}
+.lpop--wrap.lpop-alramAgreeGuide .form-select-box .form-check{position:relative;}
+.lpop--wrap.lpop-alramAgreeGuide .form-select-box .form-check label{position:relative; display: block; padding: 7px 24px 7px 33px; font-size: 14px; color: #424242; line-height: 20px; text-align: left;}
+.lpop--wrap.lpop-alramAgreeGuide .form-select-box .form-check label::after{content: ''; display: block; position:absolute; left:0px; top:9px; width: 22px; height: 22px; background-image:url(https://isrnd.bccard.com:34443/mobile/front/mapp/assets/images/renew/my/check01_24x24.png); background-position: center center; background-repeat: no-repeat; background-size: 24px auto;}
+.lpop--wrap.lpop-alramAgreeGuide .form-select-box .form-check input{position: absolute; width: 100%; height: 100%; -webkit-appearance: none; appearance: none;}
+.lpop--wrap.lpop-alramAgreeGuide .form-select-box .form-check input:checked+label:after{background-image:url(https://isrnd.bccard.com:34443/mobile/front/mapp/assets/images/renew/my/check01_on_24x24.png);}
+/*----- 한도변경팝업-----*/
+.lpop--wrap.lpop-limitChangeAgree .select-lpop .lpop-header,
+.lpop--wrap.lpop-limitChangeAgree .select-lpop .lpop-cont{background-color: #f9fafc;}
+.lpop--wrap.lpop-limitChangeAgree .select-lpop .lpop-foot {background-color:#f9fafc;}
+.lpop--wrap.lpop-limitChangeAgree .select-lpop .lpop-foot:before {background:linear-gradient(180deg, rgba(249,250,252,0) 0%, #f9fafc 100%);}
+.lpop--wrap.lpop-limitChangeAgree .select-lpop .btn--submit{color: #f9fafc; font-weight: 700;}
+.lpop--wrap.lpop-limitChangeAgree .select-lpop .btn--submit:disabled {color:#bdbdbd; background-color:#e0e4e8; font-weight: 700;}
+.limit-change-view .limit-title{font-size:22px; color:#000; font-weight: 700; line-height: 32.56px;}
+.limit-change-view .limit-ps{margin-top:20px; font-size:15px; color:#666c76; font-weight: 400; line-height: 22.2px;}
+.limit-change-view .limit-list .title {font-size:18px; color:#45567e; font-weight: 400; line-height: 28px;}
+.limit-change-view .limit-list .form-limit .limit-ipt{
+    -webkit-display: flex; -moz-display: flex; -ms-display: flex; display: flex;
+    -webkit-align-items: center; align-items: center; 
+    -webkit-justify-content: space-between; -moz-justify-content: space-between; justify-content: space-between;
+}
+.limit-change-view .limit-list .form-limit .limit-ipt .lap{position:relative; padding:10px 0; border:1px solid transparent; border-radius: 6px; box-sizing: border-box; 
+    -webkit-display: flex; -moz-display: flex; -ms-display: flex; display: flex;
+    -webkit-align-items: center; align-items: center; 
+    -webkit-justify-content: flex-end; -moz-justify-content: flex-end; justify-content: flex-end;
+}
+.limit-change-view .limit-list .form-limit .limit-ipt .lap input{ margin-top: -2px; width:calc(100% - 30px); font-size: 22px; font-weight: 700; text-align: right;}
+.limit-change-view .limit-list .form-limit .limit-ipt .lap .value{ margin-top: -2px; font-size: 20px; font-weight: 700; color:#2e3136; text-align: right;}
+.limit-change-view .limit-list .form-limit .limit-ipt .lap .unit{margin-left:2px; font-size: 17px; color:#000; white-space: nowrap;}
+.limit-change-view .limit-list .form-limit .limit-ipt .tt{position: absolute; display:block; font-size: 0; color:transparent;}
+.limit-change-view .limit-list .form-limit .limit-ipt > .before{
+    -webkit-flex:1 0 24px; 
+    -moz-flex:1 0 24px; ; 
+    -ms-flex:1 0 24px; 
+    flex:1 0 24px;
+}
+.limit-change-view .limit-list .form-limit .limit-ipt > .after{
+    -webkit-flex:1 0 0; 
+    -moz-flex:1 0 0; ; 
+    -ms-flex:1 0 0; 
+    flex:1 0 0;
+}
+.limit-change-view .limit-list .form-limit .limit-ipt > .before .lap{position:relative; border-color:#fff; padding-right: 24px;
+    -webkit-justify-content: flex-start; -moz-justify-content: flex-start; justify-content: flex-start;
+}
+.limit-change-view .limit-list .form-limit .limit-ipt > .before .lap::after{content:''; display:block; position: absolute; right:0; top:50%; width:24px; height: 10px; background: url('https://isrnd.bccard.com:34443/mobile/front/mapp/assets/images/renew/my/icon-arrow@24x3.png') center center no-repeat; background-size: contain; transform:translateY(-50%);}
+.limit-change-view .limit-list .form-limit .limit-ipt > .before .lap input{text-align: left;}
+.limit-change-view .limit-list .form-limit .limit-ipt > .after .unit{font-size: 18px;}
+.limit-change-view .limit-list .form-limit .limit-ipt > .after .tt{text-align: right;}
+.limit-change-view .limit-list .limit-item{margin:0 -4px; padding:24px; background-color: #fff; border-radius: 14px; box-shadow: 0px 6px 16px rgba(15,21,34, 0.04);}
+.limit-change-view .limit-list .limit-item + .limit-item{margin-top: 16px;}
+.limit-change-view .limit-list{margin-top: 24px;}
+.limit-change-view .limit-agree{margin-top: 20px; padding-top: 20px; border-top:1px solid #ececec;}
+/*-----  이용동의팝업-----*/
+.select-accept-terms.default .select-lpop .lpop-header {border-bottom:0; min-height:20px;}
+.select-accept-terms.default .lpop-cont {padding:0 24px 100px;}
+.select-accept-terms.default .lpop-cont .tit-20{line-height: 32px; font-size: 20px; font-weight: 700;}
+.select-accept-terms.default .lpop-cont .stit{margin-top:20px; font-size: 15px; font-weight: 400;}
+.select-accept-terms.default .lpop-cont .stit strong{font-weight: 700;}
+.select-accept-terms.default input.re-chk-sb[type="checkbox"] {position:absolute;left:-9999px;}
+.select-accept-terms.default input.re-chk-sb[type="checkbox"] + label {display:inline-block; vertical-align:middle; position:relative; padding-left:31px;}
+.select-accept-terms.default input.re-chk-sb[type="checkbox"] + label:before {content:''; position:absolute; left:0; top:50%; width:24px; height:24px; background:url('https://isrnd.bccard.com:34443/mobile/front/mapp/assets/images/money/re_check_icons.png') no-repeat 0 0; background-size:100% auto; transform: translateY(-50%)}
+.select-accept-terms.default input.re-chk-sb[type="checkbox"]:checked + label:before {background-position: 0 -24px;} 
+.select-accept-terms.default .fn-chk-all{margin:30px -4px 0; border:1px solid #000; border-radius:2rem; line-height:56px; padding:0; text-align: center;}
+.select-accept-terms.default .fn-chk-all input.re-chk-sb[type="checkbox"] + label{display:block; width:100%; font-size:18px; color:#000; font-weight:700; padding-left:0;}
+.select-accept-terms.default .fn-chk-all input.re-chk-sb[type="checkbox"] + label:before{width:24px; height:24px; left: 24px;}
+.select-accept-terms.default .fn-chk-all input.re-chk-sb[type="checkbox"] + label:before{    background: url(https://isrnd.bccard.com:34443/mobile/front/mapp/assets/images/money/re_check_icons2.png) no-repeat 0 0; background-size: 100% auto; transform: translateY(-50%);}
+.select-accept-terms.default .fn-chk-all input.re-chk-sb[type="checkbox"]:checked + label:before{background:url(https://isrnd.bccard.com:34443/mobile/front/mapp/assets/images/renew/money/mark_v03_black_72x72.png) no-repeat 50%/100% auto;}
+.select-accept-terms.default .fn-chk-all + .fn-chk-list{margin-top:19px; margin-bottom:-5px;}
+.select-accept-terms.default .fn-chk-all a {font-size:13px; color:#424242;}
+.select-accept-terms.default .fn-chk-list .re-chk-sb + label{font-size: 15px; color:#757575;}
+.select-accept-terms.default .c-item{font-size:0; display:flex; justify-content: space-between; align-items: center;}
+.select-accept-terms.default .c-item .termsTitle-this{margin-right: -10px; width:32px; height:32px; display:inline-block; overflow:hidden; text-indent: -200px; background: url(https://isrnd.bccard.com:34443/mobile/front/mapp/assets/images/my/ico_arr_b32.svg) center center no-repeat; vertical-align: middle; opacity: 0.5;}
+.select-accept-terms.default .c-item {padding:3px 0;}
+.select-accept-terms.default .c-item a {font-size:12px; color:#757575;}
+/*----- 이용동의[약관]팝업 -----*/
+.lpop--wrap.select-terms-view{background-color: #fff;}
+.lpop--wrap.select-terms-view .lpop-cont > .push-terms-cont{}
+.select-terms-view.top-type .lpop-inner {top:0; max-height:none;}
+.select-terms-view.top-type .lpop-header {border-radius:0;}
+.select-terms-view.top-type .select-lpop .lpop-cont {padding-bottom:100px;}
+/*----- 이용동의[약관]팝업 db호출 영역 -----*/
+.lpop--wrap.select-terms-view .push-terms-cont {color:#666; font-size:15px;}
+.lpop--wrap.select-terms-view .agreeWrap {color:#666; font-size:15px;}
+.lpop--wrap.select-terms-view .agreeWrap dl > dt {margin:15px 0; font-size:16px; color:#000;}
+.lpop--wrap.select-terms-view .agreeWrap dl > dt:nth-of-type(1) {margin-top:0px;}
+.lpop--wrap.select-terms-view .agreeWrap dl > dt.tit {font-weight:700;}
+.lpop--wrap.select-terms-view .agreeWrap dl > dd{font-size:15px; line-height: 26px; color:#424242;}
+.lpop--wrap.select-terms-view .agreeWrap dl > dd ol > li{padding-left: 10px; text-indent: -10px;}
+.lpop--wrap .btn-confirm-fn {position:fixed; bottom:0; left:0; right:0; font-size:0; display: flex; flex-wrap: wrap; align-items: center;justify-content: flex-end; width:100%; height:93px; padding:28px 20px 12px; box-sizing:border-box; background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #fff 30%);}
+.lpop--wrap .btn-confirm-fn button[disabled] {background-color:#e0e4e8; color:#bdbdbd;}
+.lpop--wrap .btn-confirm-fn button {display:block; width:100%; height:52px; line-height:1.3; padding:13px 30px; text-align:center; font-size:17px; color:#fff; font-family: 'Spoqa Han Sans'; font-weight:bold; background-color:#fa5273; border-radius:2rem;
+	-webkit-box-sizing:border-box; -moz-box-sizing:border-box; box-sizing:border-box;}
+.select-accept-terms.default .lpop-cont {padding: 0 24px 100px!important;}
+
+
+/*** BC 바로 맞춤금융 page ***/
+.matching-limit-area .sec:first-of-type{padding-top:16px; padding-bottom: 60px;}
+.matching-limit-area .limit-box + .limit-box{margin-top: 16px;}
+.matching-limit-area .limit-box{margin-left:-4px; margin-right:-4px; padding:28px 24px; background-color:#fff; border-radius: 14px; 
+    -webkit-box-shadow: 0px 6px 16px rgba(15,21,34,0.04);
+    -moz-box-shadow: 0px 6px 16px rgba(15,21,34,0.04);
+    box-shadow: 0px 6px 16px rgba(15,21,34,0.04);
+}
+.matching-limit-area .limit-box .l-title{font-size: 18px; font-weight: 700; color:#000; line-height: 28px;}
+.matching-limit-area .limit-box .l-title .ico{position:relative; display: inline-block; top:4px; margin-right: 15px; width: 22px; height: 22px; background-repeat: no-repeat; background-position: center center; background-size:contain;}
+.matching-limit-area .limit-box .l-title .ico.revolving{background-image:url(https://isrnd.bccard.com:34443/mobile/front/mapp/assets/images/renew/my/icon-calender@22x3.png);}
+.matching-limit-area .limit-box .l-title .ico.shotLoan{background-image:url(https://isrnd.bccard.com:34443/mobile/front/mapp/assets/images/renew/my/icon-money@22x3.png);}
+.matching-limit-area .limit-box .l-title .ico.longLoan{background-image:url(https://isrnd.bccard.com:34443/mobile/front/mapp/assets/images/renew/my/icon-card@22x3.png);}
+.matching-limit-area .limit-box .l-tt{margin-top: 22px; font-size: 15px; font-weight: 700; color:#3a3e44; line-height: 22.2px;}
+.matching-limit-area .limit-box .l-tx{margin-top:4px; font-size: 14px; font-weight: 400; color:#3a3e44; line-height: 22px;}
+.matching-limit-area .limit-box .l-list{margin-top: 22px;}
+.matching-limit-area .limit-box .l-list > div{
+    -webkit-display: flex; -moz-display: flex; -ms-display: flex; display: flex;
+    -webkit-align-items: center; align-items: center; 
+    -webkit-justify-content: space-between; -moz-justify-content: space-between; justify-content: space-between;
+}
+.matching-limit-area .limit-box .l-list > div + div{margin-top: 12px;}
+.matching-limit-area .limit-box .l-list > div .amount{font-size: 22px; font-weight: 700; color:#293952; line-height: 28px;}
+.matching-limit-area .limit-box .l-list > div .unit{margin-left:2px; display: inline-block; width:30px; font-size: 16px; font-weight: 400; color:#293952; vertical-align: text-bottom;}
+.matching-limit-area .limit-box .l-list{font-size: 16px; font-weight: 400; color:#666c76; line-height: 23.68px;}
+.matching-limit-area .limit-box .l-btn1{margin:20px -4px 0; width:calc(100% + 8px); height: 53px; font-size: 16px; color:#293952; background-color: #f1f4f7; border-radius: 100px;}
+.matching-limit-area .limit-box .l-tx + .l-btn1{margin-top:24px;}
+
+
+/*** 이용한도변경 page ***/
+.change-limit-area.has-bottom{padding-bottom: 116px;}
+.change-limit-area .top-title-lap{padding: 16px 0 0;}
+.change-limit-area .top-title{font-size: 20px; font-weight: 700; color:#000; line-height: 29.6px;}
+.change-limit-area .top-title-ps{margin-top:8px; font-size: 14px; font-weight: 400; color:#424242; line-height: 20px;}
+.change-limit-area .change-limit-box{margin: 24px -4px 0; padding:24px 24px 28px;  background-color:#fff; border-radius: 14px; 
+    -webkit-box-shadow: 0px 6px 16px rgba(15,21,34,0.04);
+    -moz-box-shadow: 0px 6px 16px rgba(15,21,34,0.04);
+    box-shadow: 0px 6px 16px rgba(15,21,34,0.04);
+}
+.change-limit-area .change-limit-box + .change-limit-box{margin-top: 16px;}
+.change-limit-area .change-limit-box .title-wrap {display:table; width:100%;}
+.change-limit-area .change-limit-box .title {display:table-cell; color:#1d2024; font-size:18px; font-weight: 700; line-height: 28px;}
+.change-limit-area .change-limit-box .amount {display:table-cell; color:#6495b0; font-size:14px; font-weight: 400; line-height: 20px; text-align:right;}
+.change-limit-area .change-limit-box .amount strong{font-weight: 700;}
+.change-limit-area .change-limit-box .amount .utxt{font-size: 14px;}
+.change-limit-area .change-limit-box .amount .utxt strong{font-size: 16px; font-weight: 700;}
+.change-limit-area .change-limit-box .amount .dtxt{font-size: 13px; line-height: 19px; word-break: keep-all;}
+.change-limit-area .form-limit .limit-ipt{margin-top:12px;
+    -webkit-display: flex; -moz-display: flex; -ms-display: flex; display: flex;
+    -webkit-align-items: center; align-items: center; 
+    -webkit-justify-content: space-between; -moz-justify-content: space-between; justify-content: space-between;
+}
+.change-limit-area .form-limit .limit-ipt .lap{position:relative; height:54px; padding:10px 10px 10px 0; border:1px solid #ddd; border-radius: 6px; box-sizing: border-box; 
+    -webkit-display: flex; -moz-display: flex; -ms-display: flex; display: flex;
+    -webkit-align-items: center; align-items: center; 
+    -webkit-justify-content: flex-end; -moz-justify-content: flex-end; justify-content: flex-end;
+}
+.change-limit-area .form-limit .limit-ipt .lap input{ margin-top: -2px; width:calc(100% - 30px); font-size: 22px; font-weight: 700; text-align: right;}
+.change-limit-area .form-limit .limit-ipt .lap .value{ margin-top: -2px; font-size: 20px; font-weight: 700; color:#2e3136; text-align: right;}
+.change-limit-area .form-limit .limit-ipt .lap .unit{margin-left:2px; font-size: 17px; color:#000; white-space: nowrap;}
+.change-limit-area .form-limit .limit-ipt .tt{display:block; margin-bottom:6px; font-size: 14px; color:#8f96a0;}
+.change-limit-area .form-limit .limit-ipt > .before{
+    -webkit-flex:1 0 0; 
+    -moz-flex:1 0 0; ; 
+    -ms-flex:1 0 0; 
+    flex:1 0 0;
+}
+.change-limit-area .form-limit .limit-ipt > .after{margin-left: 15px; 
+    -webkit-flex:1 0 0; 
+    -moz-flex:1 0 0; ; 
+    -ms-flex:1 0 0; 
+    flex:1 0 0;
+}
+.change-limit-area .form-limit .limit-ipt > .before .lap{position:relative; border-color:#fff; padding-right: 30px;
+    -webkit-justify-content: flex-start; -moz-justify-content: flex-start; justify-content: flex-start;
+}
+.change-limit-area .form-limit .limit-ipt > .before .lap::after{content:''; display:block; position: absolute; right:0; top:50%; width:24px; height: 10px; background: url('https://isrnd.bccard.com:34443/mobile/front/mapp/assets/images/renew/my/icon-arrow@24x3.png') center center no-repeat; background-size: contain; transform:translateY(-50%);}
+.change-limit-area .form-limit .limit-ipt > .before .lap input{text-align: left;}
+.change-limit-area .form-limit .limit-ipt > .after .unit{font-size: 18px;}
+.change-limit-area .form-limit .limit-ipt > .after .tt{text-align: right;}
+.change-limit-area .form-limit .limit-txt{display: none; margin-top:16px; font-size: 13px; color:#f43347; line-height: 16px;}
+.change-limit-area .form-limit.is-err .limit-txt{display: block;}
+.change-limit-area .form-limit.is-err .limit-ipt > .after .lap input{color: #f43347;}
+.change-limit-area .form-limit.is-err .limit-ipt > .after .unit{color: #f43347;}
+.change-limit-area .sec-bottom{position: fixed; bottom: 0; left: 0; right: 0; padding:12px 20px; background-color: #f9f9fa;;}
+.change-limit-area .sec-bottom .btn-confirm{display: block; height: 52px; width:100%; font-size: 17px; font-weight: 700; color:#fff; border-radius: 100px; background-color: #fa5273;}
+.change-limit-area .sec-bottom .btn-confirm:disabled{color:#bdbdbd; background-color: #e0e4e8;}
+.change-limit-area .sec-bottom::before{content:''; height:16px; position:absolute; top:-16px; left:0; right:0; background: linear-gradient(180deg, rgba(255,255,255,0) 0%, #f9fafc 100%);}
+.change-limit-area .sec-bottom {background-color: #f9f9fc;}
+.change-limit-area .change-agree-box{margin-top: 20px;}
+@media screen and (max-width: 320px){
+    .change-limit-area .form-limit .limit-ipt > .after { margin-left: 8px;}
+}
+
+
+/*** 금융서비스 이용동의 변경 page ***/
+.change-agree-area.has-bottom{padding-bottom: 116px;}
+.change-agree-area .top-title-lap{padding: 16px 4px 0;}
+.change-agree-area .top-title{font-size: 20px; font-weight: 700; color:#000; line-height: 32px;}
+.change-agree-area .top-title-ps{margin-top:12px; font-size: 15px; font-weight: 400; color:#1d2024; line-height: 23px;}
+.change-agree-area .top-title-ps strong{font-weight: 700;}
+@media screen and (max-width: 360px){
+    .change-agree-area .top-title-ps br{display: none;}
+}
+.change-agree-area .change-agree-box{margin: 24px -4px 0; padding: 27px 14px 27px 21px; background-color:#fff; border-radius: 14px; 
+    -webkit-box-shadow: 0px 6px 16px rgba(15,21,34,0.04);
+    -moz-box-shadow: 0px 6px 16px rgba(15,21,34,0.04);
+    box-shadow: 0px 6px 16px rgba(15,21,34,0.04);
+}
+.change-agree-area .fn-chk-list .c-item{font-size:0; display:flex; justify-content: space-between; align-items: center;}
+.change-agree-area .fn-chk-list .c-item .termsTitle-this{width:32px; height:32px; display:inline-block; overflow:hidden; text-indent: -200px; background: url(https://isrnd.bccard.com:34443/mobile/front/mapp/assets/images/my/ico_arr_b32.svg) center center no-repeat; vertical-align: middle; opacity: 0.5;}
+.change-agree-area .fn-chk-list .c-item {padding:3px 0;}
+.change-agree-area .fn-chk-list .c-item a {font-size:12px; color:#757575;}
+.change-agree-area .fn-chk-list .re-chk-sb + label{font-size: 15px; color:#757575;}
+.change-agree-area .fn-chk-list input.re-chk-sb[type="checkbox"] {position:absolute;left:-9999px;}
+.change-agree-area .fn-chk-list input.re-chk-sb[type="checkbox"] + label {display:inline-block; vertical-align:middle; position:relative; padding-left:31px;}
+.change-agree-area .fn-chk-list input.re-chk-sb[type="checkbox"] + label:before {content:''; position:absolute; left:0; top:50%; width:24px; height:24px; background:url('https://isrnd.bccard.com:34443/mobile/front/mapp/assets/images/money/re_check_icons.png') no-repeat 0 0; background-size:100% auto; transform: translateY(-50%)}
+.change-agree-area .fn-chk-list input.re-chk-sb[type="checkbox"]:checked + label:before {background-position: 0 -24px;} 
+.change-agree-area .sec-bottom{position: fixed; bottom: 0; left: 0; right: 0; padding:12px 20px; background-color: #f9f9fa;;}
+.change-agree-area .sec-bottom .btn-confirm{display: block; height: 52px; width:100%; font-size: 17px; font-weight: 700; color:#fff; border-radius: 100px; background-color: #fa5273;}
+.change-agree-area .sec-bottom .btn-confirm:disabled{color:#bdbdbd; background-color: #e0e4e8;}
+.change-agree-area .sec-bottom::before{content:''; height:16px; position:absolute; top:-16px; left:0; right:0; background: linear-gradient(180deg, rgba(255,255,255,0) 0%, #f9fafc 100%);}
+.change-agree-area .sec-bottom {background-color: #f9f9fc;}
+
+
+/* 탭검사  검사하고 지울거*/
+/* .renew01-header *{outline: none;}
+.renew01-header *:focus{outline: auto;}
+.my-vr01 *{outline: none;}
+.my-vr01 *:focus{outline: auto;}
+.my-vr01 button:focus{outline: auto;}
+.my-vr01 input:focus{outline: auto;} */
+
+/* 2023-02-23 */
+.matching-limit-area .limit-box .l-list dt strong, 
+.etc-limit-manage .limit-info .l-list .em,
+.etc-limit-manage .limit-info .l-list .total dt {font-weight:700;}
+.matching-limit-area .limit-box .l-list-info p{position: relative; margin-top: 8px; padding-left:0px; font-size: 14px; color:#666c76;}
+/* .matching-limit-area .limit-box .l-list-info p::before{content:''; position:absolute; left:0; top:4px; display: inline-block; width:16px; height: 16px; border-radius: 100%; background: url(https://isrnd.bccard.com:34443/mobile/front/mapp/assets/images/renew/my/ico_info.png) center center no-repeat; background-size: contain;} */
+.flex-bx {display: flex; flex-direction: row; margin-bottom: 20px;}
+.flex-bx .l-tt.fl-tt {margin-top:3px !important;}
+.flex-bx .flex-bg-txt {margin-left: auto; font-size: 12px; line-height: 18px; font-weight:700; text-align: center; word-break: keep-all; padding:6px 12px; color: #fff; border-radius: 22px; background-color: #5d67cf;}
+.manage-limit-area .etc-limit-manage .limit-info .l-btn1, 
+.manage-limit-area .etc-limit-manage .limit-info .l-btn2, 
+.matching-limit-area .limit-box .l-btn1 {font-weight: 700;}
+.manage-limit-area .etc-limit-manage .limit-info .l-ps.no-i{position: relative; margin-top: 8px; padding-left:0px !important; font-size: 14px; color:#666c76;}
+.manage-limit-area .etc-limit-manage .limit-info .l-ps.no-i::before{display:none !important;}
