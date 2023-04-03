@@ -3,7 +3,7 @@ const LinkItem = (props) => {
 
   return (
     <span className="amount">
-      {isApproximate ? <span className="htxt">최대 </span> : ""}
+      {isApproximate ? <span className="htxt">최대 </span> : ''}
       {limit}
       <span className="unit">원</span>
     </span>

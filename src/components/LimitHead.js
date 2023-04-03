@@ -1,4 +1,4 @@
-import Guide from "./Guide";
+import Guide from './Guide';
 
 const LimitHead = (props) => {
   const { date, limitAmount, isRaisable } = props;
@@ -15,7 +15,7 @@ const LimitHead = (props) => {
       </p>
 
       {isRaisable ? (
-        ""
+        ''
       ) : (
         <mark class="text-badge">
           <strong>최대한도로 이용중</strong>
@@ -27,8 +27,8 @@ const LimitHead = (props) => {
 };
 
 LimitHead.defaultProps = {
-  date: "2023.04.04",
-  limitAmount: "6,000,000",
+  date: '2023.04.04',
+  limitAmount: '6,000,000',
   isRaisable: false,
 };
 

@@ -1,108 +1,126 @@
 <div class="my-vr01 manage-limit-area">
-    <div class="sec --gray">
-        <div class="total-limit-manage">
-            <div class="total-limit-box">
-                <div class="title-wrap">
-                    <p class="title">총 이용한도</p>
-                    <p class="date">2021.05.20 기준</p>
-                </div>
-                <p class="text-amount"><strong>6,000,000</strong><span class="unit">원</span></p>
-                <!-- <mark class="text-badge"><strong>최대한도로 이용중</strong></mark> --><!-- 한도변경 가능일때 hidden -->
-                <ul class="text-guide">
-                    <li>총 이용한도 내에서 일시불·할부 및 단기카드대출(현금서비스)을 이용할 수 있습니다.
-                        <!-- 20221223수정 [툴팁추가] -->
-                        <div class="tooltip">
-                            <button class="tip-open">안내</button>
-                            <div class="tip-cont">
-                                <div class="tip-desc">
-                                    <p class="tit">한도변경 안내</p>
-                                    <p class="txt dot">최대한도 이내 부분상향 및 하향은 BC 바로카드 고객센터 (1577-3566)로 문의 해 주세요.</p>
-                                </div>
-                                <button class="tip-close">안내</button>
-                            </div>
-                        </div>
-                        <!-- //20221223수정 [툴팁추가] -->
-                    </li>
-                </ul>
-            </div>
-            <!-- 20221223수정 [한도요약정보 추가] -->
-            <ul class="total-limit-summery">
-                <li>
-                    <div>일시불·할부</div>
-                    <div><span class="amount">6,000,000<span class="unit">원</span></span></div>
-                </li>
-                <li>
-                    <div>단기카드대출(현금서비스)</div>
-                    <div>
-                        <span class="amount">2,000,000<span class="unit">원</span></span>
-                        <!-- <button class="btn-limit" onclick="fnOpenLayer('.select-accept-terms')">한도보기</button> -->
-                    </div>
-                </li>
-                <li>
-                    <div>장기카드대출(카드론)</div>
-                    <div>
-                        <span class="amount"><span class="htxt">최대</span> 20,000,000<span class="unit">원</span></span>
-                        <!-- <button class="btn-limit" onclick="fnOpenLayer('.select-accept-terms')">한도보기</button> -->
-                    </div>
-                </li>
-            </ul>
-            <!-- 20221223수정 [//한도요약정보 추가] -->
-            <!-- 한도변경 가능일때 show -->
-            <div class="total-limit-bnr">
-                <p class="txt"><strong><em>1,000</em>만원</strong> 까지<br>한도를 바로 늘려보세요!</p>
-                <button class="btn" onclick="fnOpenLayer('.lpop-limitChangeAgree')">바로 늘리기</button><!-- //20221223수정 [//버튼수정] -->
-            </div>
-            <div class="total-limit-alram">
-                <p class="alram-txt">한도가 늘어나면 알림받기</p>
-                <div class="alram-btn" tabindex="0">
-                    <div class="form-switch" id="moneyChkAgree">
-                        <input type="checkbox" name="moneyChk" id="moneyChk" disabled>
-                        <label for="moneyChk">이어서 잔돈모으기 동의하기</label>
-                    </div>
-                </div>
-            </div>
+  <div class="sec --gray">
+    <div class="total-limit-manage">
+      <div class="total-limit-box">
+        <div class="title-wrap">
+          <p class="title">총 이용한도</p>
+          <p class="date">2021.05.20 기준</p>
         </div>
-	</div>
-    <div class="sec">
-        <div class="etc-limit-manage">
-            <div class="limit-info">
-                <p class="l-tit">일시불·할부</p>
-                <dl class="l-list">
-                    <div>
-                        <dt>현재한도</dt>
-                        <dd><span class="amount">3,123,556<span class="unit">원</span></span></dd>
-                    </div>
-                    <div>
-                        <dt>이용금액</dt>
-                        <dd><span class="amount">835,064<span class="unit">원</span></span></dd>
-                    </div>
-                    <div class="total">
-                        <dt>잔여이용한도</dt>
-                        <dd><span class="amount">5,900,000<span class="unit">원</span></span></dd>
-                    </div>
-                </dl>
-                <button class="l-btn1">이용한도 변경</button>
+        <p class="text-amount"><strong>6,000,000</strong><span class="unit">원</span></p>
+        <!-- <mark class="text-badge"><strong>최대한도로 이용중</strong></mark> --><!-- 한도변경 가능일때 hidden -->
+        <ul class="text-guide">
+          <li>
+            총 이용한도 내에서 일시불·할부 및 단기카드대출(현금서비스)을 이용할 수 있습니다.
+            <!-- 20221223수정 [툴팁추가] -->
+            <div class="tooltip">
+              <button class="tip-open">안내</button>
+              <div class="tip-cont">
+                <div class="tip-desc">
+                  <p class="tit">한도변경 안내</p>
+                  <p class="txt dot">최대한도 이내 부분상향 및 하향은 BC 바로카드 고객센터 (1577-3566)로 문의 해 주세요.</p>
+                </div>
+                <button class="tip-close">안내</button>
+              </div>
             </div>
-            <div class="limit-info">
-                <p class="l-tit">단기카드대출 (현금서비스)</p>
-                <!-- 단기카드대출 동의 case1 -->
-                <dl class="l-list">
-                    <div>
-                        <dt>현재한도</dt>
-                        <dd><span class="amount">2,000,000<span class="unit">원</span></span></dd>
-                    </div>
-                    <div>
-                        <dt>이용금액</dt>
-                        <dd><span class="amount">0<span class="unit">원</span></span></dd>
-                    </div>
-                    <div class="total">
-                        <dt>잔여이용한도</dt>
-                        <dd><span class="amount">2,000,000<span class="unit">원</span></span></dd>
-                    </div>
-                </dl>
-                <button class="l-btn1">단기카드대출(현금서비스) 신청</button>
-                <!-- 단기카드대출 미동의 case2 -->
-                <!-- <dl class="l-list">
+            <!-- //20221223수정 [툴팁추가] -->
+          </li>
+        </ul>
+      </div>
+      <!-- 20221223수정 [한도요약정보 추가] -->
+      <ul class="total-limit-summery">
+        <li>
+          <div>일시불·할부</div>
+          <div>
+            <span class="amount">6,000,000<span class="unit">원</span></span>
+          </div>
+        </li>
+        <li>
+          <div>단기카드대출(현금서비스)</div>
+          <div>
+            <span class="amount">2,000,000<span class="unit">원</span></span>
+            <!-- <button class="btn-limit" onclick="fnOpenLayer('.select-accept-terms')">한도보기</button> -->
+          </div>
+        </li>
+        <li>
+          <div>장기카드대출(카드론)</div>
+          <div>
+            <span class="amount"><span class="htxt">최대</span> 20,000,000<span class="unit">원</span></span>
+            <!-- <button class="btn-limit" onclick="fnOpenLayer('.select-accept-terms')">한도보기</button> -->
+          </div>
+        </li>
+      </ul>
+      <!-- 20221223수정 [//한도요약정보 추가] -->
+      <!-- 한도변경 가능일때 show -->
+      <div class="total-limit-bnr">
+        <p class="txt">
+          <strong><em>1,000</em>만원</strong> 까지<br />한도를 바로 늘려보세요!
+        </p>
+        <button class="btn" onclick="fnOpenLayer('.lpop-limitChangeAgree')">바로 늘리기</button
+        ><!-- //20221223수정 [//버튼수정] -->
+      </div>
+      <div class="total-limit-alram">
+        <p class="alram-txt">한도가 늘어나면 알림받기</p>
+        <div class="alram-btn" tabindex="0">
+          <div class="form-switch" id="moneyChkAgree">
+            <input type="checkbox" name="moneyChk" id="moneyChk" disabled />
+            <label for="moneyChk">이어서 잔돈모으기 동의하기</label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="sec">
+    <div class="etc-limit-manage">
+      <div class="limit-info">
+        <p class="l-tit">xf</p>
+        <dl class="l-list">
+          <div>
+            <dt>현재한도</dt>
+            <dd>
+              <span class="amount">3,123,556<span class="unit">원</span></span>
+            </dd>
+          </div>
+          <div>
+            <dt>이용금액</dt>
+            <dd>
+              <span class="amount">835,064<span class="unit">원</span></span>
+            </dd>
+          </div>
+          <div class="total">
+            <dt>잔여이용한도</dt>
+            <dd>
+              <span class="amount">5,900,000<span class="unit">원</span></span>
+            </dd>
+          </div>
+        </dl>
+        <button class="l-btn1">이용한도 변경</button>
+      </div>
+      <div class="limit-info">
+        <p class="l-tit">단기카드대출 (현금서비스)</p>
+        <!-- 단기카드대출 동의 case1 -->
+        <dl class="l-list">
+          <div>
+            <dt>현재한도</dt>
+            <dd>
+              <span class="amount">2,000,000<span class="unit">원</span></span>
+            </dd>
+          </div>
+          <div>
+            <dt>이용금액</dt>
+            <dd>
+              <span class="amount">0<span class="unit">원</span></span>
+            </dd>
+          </div>
+          <div class="total">
+            <dt>잔여이용한도</dt>
+            <dd>
+              <span class="amount">2,000,000<span class="unit">원</span></span>
+            </dd>
+          </div>
+        </dl>
+        <button class="l-btn1">단기카드대출(현금서비스) 신청</button>
+        <!-- 단기카드대출 미동의 case2 -->
+        <!-- <dl class="l-list">
                     <div>
                         <dt>현재한도</dt>
                         <dd><span class="amount">0<span class="unit">원</span></span></dd>
@@ -110,39 +128,44 @@
                 </dl>
                 <p class="l-ps">단기카드대출 이용에 동의하지 않는 경우, 한도가 '0'으로 표기됩니다.</p>
                 <button class="l-btn2">단기카드대출(현금서비스) 한도 보기</button> -->
-            </div>
-            <div class="limit-info">
-                <!-- 2023-02-23 -->
-                <div class="flex-bx">
-                    <p class="l-tit">장기카드대출 (카드론)</p>
-                    <p class="flex-bg-txt">최대 20만원 머니백</p>
-                </div>
-                <!--// 2023-02-23 -->
-                <!-- 장기카드대출 동의 case1 -->
-                <dl class="l-list">
-                    <div>
-                        <dt>최대한도</dt>
-                        <dd><span class="amount">50,000,000<span class="unit">원</span></span></dd>
-                    </div>
-                    <!-- 2023-02-23 -->
-                    <div>
-                        <dt>연 최저금리</dt>
-                        <dd><span class="amount">7.5<span class="unit">%~</span></span></dd>
-                    </div>
-                    <!--// 2023-02-23 -->
-                </dl>
-                <button class="l-btn1">장기카드대출(카드론) 신청</button>
-                <!-- 장기카드대출 미동의 case2 -->
-                <!-- <button class="l-btn2">최대20만원 머니백 이벤트 보기</button> -->
-            </div>
-            <ul class="limit-link">
-                <li class="link"><a href="#none">카드별 한도관리</a></li>
-                <li class="link"><a href="#none">백화점 특별한도 신청</a></li>
-            </ul>
-            <div class="limit-ect">
-                <a href="#none" class="text-link">금융서비스 이용동의 변경</a><!-- //20221223수정 [텍스트변경] -->
-                <p>비씨카드 고객센터 : 1588-4000</p>
-            </div>
+      </div>
+      <div class="limit-info">
+        <!-- 2023-02-23 -->
+        <div class="flex-bx">
+          <p class="l-tit">장기카드대출 (카드론)</p>
+          <p class="flex-bg-txt">최대 20만원 머니백</p>
         </div>
-	</div>
+        <!--// 2023-02-23 -->
+        <!-- 장기카드대출 동의 case1 -->
+        <dl class="l-list">
+          <div>
+            <dt>최대한도</dt>
+            <dd>
+              <span class="amount">50,000,000<span class="unit">원</span></span>
+            </dd>
+          </div>
+          <!-- 2023-02-23 -->
+          <div>
+            <dt>연 최저금리</dt>
+            <dd>
+              <span class="amount">7.5<span class="unit">%~</span></span>
+            </dd>
+          </div>
+          <!--// 2023-02-23 -->
+        </dl>
+        <button class="l-btn1">장기카드대출(카드론) 신청</button>
+        <!-- 장기카드대출 미동의 case2 -->
+        <!-- <button class="l-btn2">최대20만원 머니백 이벤트 보기</button> -->
+      </div>
+      <ul class="limit-link">
+        <li class="link"><a href="#none">카드별 한도관리</a></li>
+        <li class="link"><a href="#none">백화점 특별한도 신청</a></li>
+      </ul>
+      <div class="limit-ect">
+        <a href="#none" class="text-link">금융서비스 이용동의 변경</a
+        ><!-- //20221223수정 [텍스트변경] -->
+        <p>비씨카드 고객센터 : 1588-4000</p>
+      </div>
+    </div>
+  </div>
 </div>

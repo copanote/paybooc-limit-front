@@ -1,6 +1,6 @@
-import "../limit.css";
-import "../renew_2020.css";
-import "../slick_swiper.css";
+import '../limit.css';
+import '../renew_2020.css';
+import '../slick_swiper.css';
 
 const Header = () => {
   return (

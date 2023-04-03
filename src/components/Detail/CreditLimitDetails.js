@@ -1,0 +1,19 @@
+import DetailItem from './DetailItem';
+
+const LimitDetails = (props) => {
+  const { limit, usage, remain } = props;
+
+  return (
+    <div className="limit-info">
+      <p className="l-tit">단기카드대출 (현금서비스)</p>
+      <dl className="l-list">
+        <DetailItem title={'현재한도'} amount={limit} />
+        <DetailItem title={'이용금액'} amount={usage} />
+        <DetailItem title={'잔여이용한도'} amount={remain} isRemain={true} />
+      </dl>
+      <button className="l-btn1">이용한도 변경</button>
+    </div>
+  );
+};
+
+export default LimitDetails;
