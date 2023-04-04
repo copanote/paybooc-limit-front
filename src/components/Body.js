@@ -8,6 +8,7 @@ import Links from './link/Links';
 import FinancialAgreeModal from './modal/FinancialAgreeModal';
 import LimitRaiseAgreeModal from './modal/LimitRaiseAgreeModal';
 import LimitRaiseModal from './modal/LimitRaiseModal';
+import TermsModal from './modal/TermsModal';
 import LimitSummary from './Summary/LimitSummary';
 import Switch from './Switch/Switch';
 
@@ -37,6 +38,7 @@ const Body = (props) => {
       <LimitRaiseAgreeModal />
       <FinancialAgreeModal />
       <LimitRaiseModal />
+      <TermsModal contents={'adfs'} />
     </>
   );
 };

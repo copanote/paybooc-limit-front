@@ -1,0 +1,133 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>결제에 혜택을 담다, paybooc</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta http-equiv="Expires" content="-1">
+	<meta http-equiv="Pragma" content="no-cache">
+	<meta http-equiv="Cache-Control" content="No-Cache">
+	<link rel="stylesheet" href="/mobile/front/mapp/assets/styles/renew_2020.css">
+	<link rel="stylesheet" href="/mobile/front/mapp/assets/styles/my_vr1.css">
+	<script src="/mobile/front/mapp/assets/scripts/libs/jquery-2.2.3.min.js"></script>
+	<script src="/mobile/front/mapp/assets/scripts/libs/jquery-confirm.min.js"></script>
+	<script src="/mobile/front/mapp/assets/scripts/libs/swiper.min.js"></script>
+	<script src="/mobile/front/mapp/assets/scripts/common.ui.js"></script>
+	<script src="/mobile/front/mapp/assets/scripts/my.js"></script>
+	<!-- <script type="text/javascript" src="//assets.adobedtm.com/launch-ENa06e5b96f7d74c9ebb421ec168dee3fd.min.js" async></script> --><!-- 운영기 적용 시 // -->
+</head>
+<body>
+<header class="renew01-header my-card-header01">
+	<a href="javascript:void(0)" class="btn-back">뒤로</a>
+	<h1 class="tit">금융서비스 이용동의 변경</h1>
+	<a href="javascript:void(0);" class="btn-close">닫기</a>
+</header>
+<div class="my-vr01 --gray has-bottom change-agree-area">
+    <div class="sec">
+        <div class="top-title-lap">
+            <p class="top-title">
+                바로카드 전용 금융상품의<br>
+                동의 현황을 확인해 보세요.
+            </p>
+            <p class="top-title-ps">
+                약관 동의 시 한도와 금리를 바로 확인할 수 있으며,<br>
+                신용점수에 📊 <strong>영향을 주지 않아요.</strong>
+            </p>
+        </div>
+        <div class="change-agree-box">
+            <div class="fn-chk-list">
+                <div class="c-item">
+                    <span>
+                        <input type="checkbox" class="re-chk-sb" id="agr-terms-3" name="">
+                        <label for="agr-terms-3">이용한도 상향 안내 동의</label>
+                    </span>
+                    <a href="javascript:void(0)" onclick="fnOpenSelectIn('.select-terms-view', 'terms03');" class="termsTitle-this">이용한도 상향 안내 동의</a>
+                </div>
+                <div class="c-item">
+                    <span>
+                        <input type="checkbox" class="re-chk-sb" id="agr-terms-2" name="" checked>
+                        <label for="agr-terms-2">단기카드대출(현금서비스) 이용동의</label><!--// 2023-03-20 -->
+                    </span>
+                    <a href="javascript:void(0)" onclick="fnOpenSelectIn('.select-terms-view', 'terms02');" class="termsTitle-this">단기카드대출(현금서비스) 이용동의</a>
+                </div>
+                <div class="c-item">
+                    <span>
+                        <input type="checkbox" class="re-chk-sb" id="agr-terms-1" name="">
+                        <label for="agr-terms-1">장기카드대출(카드론) 이용동의</label>
+                    </span>
+                    <a href="javascript:void(0)" onclick="fnOpenSelectIn('.select-terms-view', 'terms01');" class="termsTitle-this">장기카드대출(카드론) 이용동의</a>
+                </div>
+            </div>
+        </div>
+	</div>
+    <div class="sec-bottom">
+        <button class="btn btn-confirm" id="fnCheckFinal" disabled>변경하기</button>
+    </div>
+</div>
+
+<div class="lpop-mask"></div>
+
+<!-- 이용동의약관 팝업 -->
+<div class="lpop--wrap select-terms-view top-type">
+	<div class="lpop-inner">
+		<section class="select-lpop">
+			<div class="lpop-cont">
+				<div class="push-terms-cont">
+					<!-- db호출 -->
+					
+					<!--// db호출 -->
+				</div>
+			</div>
+		</section>
+		<div class="btn-confirm-fn">
+			<button onclick="fnCloseSelect();">확인</button>
+		</div>
+	</div>
+</div>
+
+
+<!-- 태깅 -->
+<script type="text/javascript">
+	_dl = {page_name : "MY|이용한도관리|금융서비스 이용동의 변경"}
+</script>
+<!--// 태깅 -->
+
+<script type="text/javascript">
+    // 레이어 띄우기
+    function fnOpenSelectIn(layer, name) {
+        var $mask = $('.lpop-mask'),
+            $lpop_wrap = $(layer),
+            $lpop_cont = $(layer + ' .lpop-cont'),
+            $terms= name;
+        $('body').addClass('stop-scroll');	
+        if($('.lpop-mask:visible').length < 1){
+            $mask.show();
+        }
+        $lpop_wrap.show();
+        $('.select-lpop .lpop-cont').css('max-height', $(window).height() - 117);
+        $('.push-terms-cont').load("/mobile/front/mapp/html/my/prepay-guide-" + $terms +".html");
+    }
+
+    // 레이어 숨기기
+    function fnCloseSelect() {
+        var $mask = $('.lpop-mask'),
+            $lpop_wrap = $('.select-lpop-wrap, .lpop--wrap');
+        $('body').removeClass('stop-scroll');
+        $mask.hide();
+        $lpop_wrap.hide();
+    }
+
+    // 버튼활성화
+    function fnCheckAgree(){
+        $('.c-item input:checkbox').each(function(){
+            var checkbox=$(this);
+            checkbox.on('change', function(){
+                $('#fnCheckFinal').prop('disabled', false);
+            });
+        });
+    }
+    fnCheckAgree();
+</script>
+</body>
+</html>

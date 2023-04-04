@@ -1,13 +1,13 @@
 import './limit.css';
-
-import Header from './components/Header';
-import Body from './components/Body';
+import { Route } from 'react-router-dom';
+import LimitManagement from './pages/LImitManagement';
+import FinanceAgreementChange from './pages/FinanceAgreementChange';
 
 function App() {
   return (
     <>
-      <Header />
-      <Body />
+      <Route path="/" element={<LimitManagement />} exact={true} />
+      <Route path="/change" element={<FinanceAgreementChange />} />
     </>
   );
 }
