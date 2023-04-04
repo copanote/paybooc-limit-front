@@ -6,7 +6,7 @@ import FinanceAgreementChange from './pages/FinanceAgreementChange';
 function App() {
   return (
     <>
-      <Route path="/" element={<LimitManagement />} exact={true} />
+      <Route path="/" element={<LimitManagement />} />
       <Route path="/change" element={<FinanceAgreementChange />} />
     </>
   );

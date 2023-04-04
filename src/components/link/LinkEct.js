@@ -4,7 +4,7 @@ const LinkEtc = (props) => {
   return (
     <div className="limit-ect">
       <Link to="/change">
-        <a href="#none" className="text-link">
+        <a href="/change" className="text-link">
           금융서비스 이용동의 변경
         </a>
       </Link>

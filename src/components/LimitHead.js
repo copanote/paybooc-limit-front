@@ -1,16 +1,16 @@
 import Guide from './Guide';
 
 const LimitHead = (props) => {
-  const { date, limitAmount, isRaisable } = props;
+  const { dateOfInquery, limit, isRaisable } = props;
 
   return (
     <div class="total-limit-box">
       <div class="title-wrap">
         <p class="title">총 이용한도</p>
-        <p class="date">{date} 기준</p>
+        <p class="date">{dateOfInquery} 기준</p>
       </div>
       <p class="text-amount">
-        <strong>{limitAmount}</strong>
+        <strong>{limit}</strong>
         <span class="unit">원</span>
       </p>
 
