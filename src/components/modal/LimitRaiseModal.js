@@ -1,10 +1,12 @@
 import { useState } from 'react';
+import AmountItem from './AmountItem';
 
 import BodyScrollLock from './BodyScrollLock';
+import LimitChangeBox from './LimitChangeBox';
 import ModalHeader from './ModalHeader';
 import ModalMask from './ModalMask';
 
-const LimitRaiseAgreeModal = (props) => {
+const LimitRaiseModal = (props) => {
   const [isVisible, setVisible] = useState(true);
   const [isAgree, setAgree] = useState(false);
   const { lockScroll, unlockScroll } = BodyScrollLock();
@@ -14,43 +16,33 @@ const LimitRaiseAgreeModal = (props) => {
     unlockScroll();
   };
 
-  const onAgreeCheckBoxChecked = () => {
-    if (isAgree) {
-      setAgree(false);
-    } else {
-      setAgree(true);
-    }
-  };
-
   return (
     <>
       <ModalMask isVisible={isVisible} />
-      <div className="lpop--wrap lpop-alramAgreeGuide" style={isVisible ? { display: 'block' } : { display: 'none' }}>
+      <div className="lpop--wrap lpop-limitChangeAgree" style={isVisible ? { display: 'block' } : { display: 'none' }}>
         <div className="lpop-inner">
           <section className="select-lpop">
             <ModalHeader onModalClose={onModalClose} />
 
             <div className="lpop-cont">
-              <div className="limit-alram-box">
-                <div className="alram-guide">
-                  <p className="tt">한도 상향 알림을 받아보세요!</p>
-                  <p className="tx">
-                    바로카드의 이용한도가 늘어난 경우,
-                    <br />
-                    빠르게 안내해 드려요
-                  </p>
+              <div className="limit-change-view">
+                <p className="limit-title">다음과 같이 한도를 변경합니다.</p>
+                <div className="limit-list">
+                  <LimitChangeBox title={'총 이용한도'} prevAmount={'1,000'} afterAmount={'1,200'} />
+                  <LimitChangeBox title={'단기카드대출한도'} prevAmount={'180'} afterAmount={'300'} />
                 </div>
-                <div className="form-select-box">
-                  <div className="form-check">
-                    <input type="checkbox" name="agree" value="agree" id="agree" onClick={onAgreeCheckBoxChecked} />
-                    <label for="agree">한도 상향이 가능한 경우 TM, LMS, 카카오톡, 이메일등을 통한 한도 상향 안내에 동의합니다.</label>
+                <p className="limit-ps">부분상향 및 한도하향은 BC 바로카드 심사센터 (1577-3566) 로 문의해 주세요.</p>
+                <div className="limit-agree">
+                  <div className="chkSingle">
+                    <input type="checkbox" name="lagree" id="lagree" checked />
+                    <label for="lagree">한도가 늘어나면 알림을 받을게요</label>
                   </div>
                 </div>
               </div>
             </div>
             <div className="lpop-foot">
-              <button className="btn--submit full" disabled={isAgree ? false : true}>
-                <span>한도 상향 알림 받기</span>
+              <button className="btn--submit full">
+                <span>한도변경</span>
               </button>
             </div>
           </section>
@@ -60,7 +52,7 @@ const LimitRaiseAgreeModal = (props) => {
   );
 };
 
-export default LimitRaiseAgreeModal;
+export default LimitRaiseModal;
 
 /**
  * 

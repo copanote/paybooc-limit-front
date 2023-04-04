@@ -140,9 +140,7 @@
     <section class="select-lpop">
       <div class="lpop-cont">
         <div class="push-terms-cont">
-          <!-- db호출 -->
 
-          <!--// db호출 -->
         </div>
       </div>
     </section>
@@ -151,3 +149,19 @@
     </div>
   </div>
 </div>
+
+<!-- 
+  function fnOpenSelectIn(layer, name) {
+        var $mask = $('.lpop-mask'),
+            $lpop_wrap = $(layer),
+            $lpop_cont = $(layer + ' .lpop-cont'),
+            $terms= name;
+        $('body').addClass('stop-scroll');	
+        if($('.lpop-mask:visible').length < 1){
+            $mask.show();
+        }
+        $lpop_wrap.show();
+        $('.select-lpop .lpop-cont').css('max-height', $(window).height() - 117);
+        $('.push-terms-cont').load("/mobile/front/mapp/html/my/prepay-guide-" + $terms +".html");
+    }
+-->
