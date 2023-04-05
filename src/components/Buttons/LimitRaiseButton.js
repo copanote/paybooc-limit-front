@@ -1,5 +1,10 @@
 const LimitRaiseButton = (props) => {
   const { amount } = props;
+
+  const onButtonClickHandler = () => {
+    props.onChangeLimitRaiseModalState(true);
+  };
+
   return (
     <div className="total-limit-bnr">
       <p className="txt">
@@ -10,7 +15,9 @@ const LimitRaiseButton = (props) => {
         <br />
         한도를 바로 늘려보세요!
       </p>
-      <button className="btn">바로 늘리기</button>
+      <button className="btn" onClick={onButtonClickHandler}>
+        바로 늘리기
+      </button>
     </div>
   );
 };

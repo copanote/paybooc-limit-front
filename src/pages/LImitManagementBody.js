@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import LimitRaiseButton from '../components/Buttons/LimitRaiseButton';
 import CardloanDetails from '../components/Detail/CardloanDetails';
 import CashServiceDetails from '../components/Detail/CashServiceDetails';
@@ -15,12 +15,28 @@ import Switch from '../components/Switch/Switch';
 
 import LimitContext from '../context/LimitContext';
 
-const LImitManagementBody = (props) => {
+const LImitManagementBody = () => {
   const { creditLimitInfo, cashserviceLimitInfo, cardloanLimitInfo, limitRaiseInfo } = useContext(LimitContext);
-  const [isLimitRaiseAgreeModalOpen, setLimitRaiseAgreeModalOpen] = useState(false);
+  const [isLimitRaiseNoticeAgreeModalOpen, setLimitRaiseNoticeAgreeModalOpen] = useState(false);
   const [isFinancialAgreeModalOpen, setFinancialAgreeModalOpen] = useState(false);
   const [isLimitRaiseModalOpen, setLimitRaiseModalOpen] = useState(false);
   const [isTermsModalOpen, setTermsModalOpen] = useState(false);
+
+  const onChangeLimitRaiseModalState = () => {
+    setLimitRaiseModalOpen((isLimitRaiseModalOpen) => !isLimitRaiseModalOpen);
+  };
+
+  const onChangeLimitRaiseNoticeAgreeModalState = () => {
+    setLimitRaiseNoticeAgreeModalOpen((isLimitRaiseNoticeAgreeModalOpen) => !isLimitRaiseNoticeAgreeModalOpen);
+  };
+
+  const onChangeFinancialAgreeModalState = () => {
+    setFinancialAgreeModalOpen((isFinancialAgreeModalOpen) => !isFinancialAgreeModalOpen);
+  };
+
+  const onChangeTermsModalState = () => {
+    setTermsModalOpen((isTermsModalOpen) => !isTermsModalOpen);
+  };
 
   return (
     <>
@@ -29,8 +45,8 @@ const LImitManagementBody = (props) => {
           <div class="total-limit-manage">
             <LimitHead isRaisable={limitRaiseInfo.isAvailable} limit={creditLimitInfo.limit} dateOfInquery={creditLimitInfo.dateOfInquery} />
             <LimitSummary />
-            <LimitRaiseButton amount={'1,000'} />
-            <Switch />
+            <LimitRaiseButton amount={'1,000'} onChangeLimitRaiseModalState={onChangeLimitRaiseModalState} />
+            <Switch isOn={isLimitRaiseNoticeAgreeModalOpen} onChangeLimitRaiseNoticeAgreeModalState={onChangeLimitRaiseNoticeAgreeModalState} />
           </div>
         </div>
 
@@ -44,10 +60,11 @@ const LImitManagementBody = (props) => {
           </div>
         </div>
       </div>
+      {isLimitRaiseModalOpen ? <LimitRaiseModal isOpen={isLimitRaiseModalOpen} onChangeLimitRaiseModalState={onChangeLimitRaiseModalState} /> : ''}
+      {/* 
       {isFinancialAgreeModalOpen ? <FinancialAgreeModal /> : ''}
-      {isLimitRaiseModalOpen ? <LimitRaiseModal /> : ''}
       {isTermsModalOpen ? <TermsModal contents={'adfs'} /> : ''}
-      {isLimitRaiseAgreeModalOpen ? <LimitRaiseAgreeModal /> : ''}
+      {isLimitRaiseAgreeModalOpen ? <LimitRaiseAgreeModal /> : ''} */}
     </>
   );
 };

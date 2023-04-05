@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import AmountItem from './AmountItem';
 
 import BodyScrollLock from './BodyScrollLock';
@@ -7,13 +7,22 @@ import ModalHeader from './ModalHeader';
 import ModalMask from './ModalMask';
 
 const LimitRaiseModal = (props) => {
-  const [isVisible, setVisible] = useState(true);
+  const [isVisible, setVisible] = useState(props.isOpen);
   const [isAgree, setAgree] = useState(false);
   const { lockScroll, unlockScroll } = BodyScrollLock();
 
+  useEffect(() => {
+    if (isVisible) lockScroll();
+
+    return () => {
+      unlockScroll();
+    };
+  });
+
   const onModalClose = () => {
     setVisible(false);
-    unlockScroll();
+    // unlockScroll();
+    props.onChangeLimitRaiseModalState();
   };
 
   return (
