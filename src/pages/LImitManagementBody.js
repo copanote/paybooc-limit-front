@@ -60,7 +60,9 @@ const LImitManagementBody = () => {
           </div>
         </div>
       </div>
-      {isLimitRaiseModalOpen ? <LimitRaiseModal isOpen={isLimitRaiseModalOpen} onChangeLimitRaiseModalState={onChangeLimitRaiseModalState} /> : ''}
+      {isLimitRaiseModalOpen && <LimitRaiseModal isOpen={isLimitRaiseModalOpen} onChangeLimitRaiseModalState={onChangeLimitRaiseModalState} />}
+      {isLimitRaiseNoticeAgreeModalOpen && <LimitRaiseAgreeModal isOpen={isLimitRaiseNoticeAgreeModalOpen} onChangeLimitRaiseModalState={onChangeLimitRaiseNoticeAgreeModalState} />}
+
       {/* 
       {isFinancialAgreeModalOpen ? <FinancialAgreeModal /> : ''}
       {isTermsModalOpen ? <TermsModal contents={'adfs'} /> : ''}

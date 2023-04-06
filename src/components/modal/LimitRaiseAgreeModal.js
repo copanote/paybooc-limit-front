@@ -5,7 +5,7 @@ import ModalHeader from './ModalHeader';
 import ModalMask from './ModalMask';
 
 const LimitRaiseAgreeModal = (props) => {
-  const [isVisible, setVisible] = useState(true);
+  const [isVisible, setVisible] = useState(props.isOpen);
   const [isAgree, setAgree] = useState(false);
   const { lockScroll, unlockScroll } = BodyScrollLock();
 

@@ -1,26 +1,26 @@
+import { useState } from 'react';
+
 const Switch = (props) => {
-  const onClinkSwitch = () => {};
+  const [isOn, setIsOn] = useState(false);
+  const onClinkSwitch = () => {
+    if (isOn) {
+      setIsOn((isOn) => !isOn);
+    } else {
+      props.onChangeLimitRaiseNoticeAgreeModalState();
+    }
+  };
 
   return (
     <div className="total-limit-alram">
-      <p className="alram-txt">한도가 늘어나면 알림받기</p>
+      <p className="alram-txt"> {isOn ? '한도상향 알림을 받고 있어요' : '한도가 늘어나면 알림받기'}</p>
       <div className="alram-btn" tabindex="0">
         <div className="form-switch " id="moneyChkAgree" onClick={onClinkSwitch}>
-          <input type="checkbox" checked name="moneyChk" id="moneyChk" disabled />
+          <input type="checkbox" checked={isOn ? true : false} name="moneyChk" id="moneyChk" disabled />
           <label for="moneyChk"></label>
         </div>
       </div>
     </div>
   );
-
-  const State = {
-    ON: {
-      text: '한도상향 알림을 받고 있어요',
-    },
-    OFF: {
-      text: '한도가 늘어나면 알림받기',
-    },
-  };
 };
 
 export default Switch;
