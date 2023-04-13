@@ -1,5 +1,5 @@
-import Header from '../components/Header';
-import { LimitContextProvider } from '../context/LimitContext';
+import Header from '../layout/Header';
+import { LimitContextProvider } from '../store/LimitContext';
 import '../limit.css';
 import LImitManagementBody from './LImitManagementBody';
 

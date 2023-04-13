@@ -1,4 +1,4 @@
-import AgreeItem from '../components/modal/AgreeItem';
+import AgreeItem from '../components/UI/modal/AgreeItem';
 
 const FinanceChangeBody = () => {
   return (

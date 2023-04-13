@@ -14,9 +14,7 @@ const LimitHead = (props) => {
         <span class="unit">원</span>
       </p>
 
-      {isRaisable ? (
-        ''
-      ) : (
+      {!isRaisable && (
         <mark class="text-badge">
           <strong>최대한도로 이용중</strong>
         </mark>

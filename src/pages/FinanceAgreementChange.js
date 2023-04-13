@@ -1,5 +1,5 @@
-import Header from '../components/Header';
-import TermsModal from '../components/modal/TermsModal';
+import Header from '../layout/Header';
+import TermsModal from '../components/UI/modal/TermsModal';
 import FinanceChangeBody from './FinanceChangeBody';
 
 const FinanceAgreementChange = () => {

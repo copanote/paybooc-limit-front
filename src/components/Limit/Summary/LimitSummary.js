@@ -13,11 +13,13 @@ const LimitSummary = (props) => {
       </li>
       <li>
         <div>단기카드대출(현금서비스)</div>
-        {cashServiceInfo.agree ? <LimitSummaryItem limit={cashServiceInfo.limit} isApproximate={false} /> : <button class="btn-limit">한도보기</button>}
+        {cashServiceInfo.agree && <LimitSummaryItem limit={cashServiceInfo.limit} isApproximate={false} />}
+        {!cashServiceInfo.agree && <button class="btn-limit">한도보기</button>}
       </li>
       <li>
         <div>장기카드대출(카드론)</div>
-        {cardLoanInfo.agree ? <LimitSummaryItem limit={cardLoanInfo.limit} isApproximate={true} /> : <button class="btn-limit">한도보기</button>}
+        {cardLoanInfo.agree && <LimitSummaryItem limit={cardLoanInfo.limit} isApproximate={true} />}
+        {!cardLoanInfo.agree && <button class="btn-limit">한도보기</button>}
       </li>
     </ul>
   );
