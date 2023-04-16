@@ -1,6 +1,7 @@
-import { createContext, useEffect, useState } from 'react';
+import LimitContext from './limit-context';
 
-const limitContext = {
+const defaultState = {
+  isAgreedWithLimitRaiseNotice: false,
   creditLimitInfo: {
     limit: '30000000',
     usage: '10000000',
@@ -19,19 +20,14 @@ const limitContext = {
     rate: '11.1',
   },
   limitRaiseInfo: {
-    isAvailable: true,
+    isRaisable: true,
     availableCreditLimitAmount: '50000000',
     availableCashserviceAmount: '100000000',
   },
 };
 
-const LimitContextProvider = ({ children }) => {
-  useEffect(() => {
-    console.log('in VnContext');
-  }, []);
-  return <LimitContext.Provider value={limitContext}> {children} </LimitContext.Provider>;
+const LimitProvider = (props) => {
+  return <LimitContext.Provider value={defaultState}>{props.children}</LimitContext.Provider>;
 };
 
-const LimitContext = createContext(limitContext);
-export default LimitContext;
-export { LimitContextProvider };
+export default LimitProvider;

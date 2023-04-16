@@ -1,5 +1,3 @@
-import TermsModal from './TermsModal';
-
 const AgreeItem = (props) => {
   const { title, termId } = props;
 

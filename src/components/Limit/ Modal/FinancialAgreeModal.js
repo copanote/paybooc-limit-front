@@ -1,19 +1,13 @@
-import { useState } from 'react';
-import AgreeItem from './AgreeItem';
-import ModalHeader from './ModalHeader';
-import ModalMask from './ModalMask';
+import { useState, useEffect } from 'react';
+import AgreeItem from './common/AgreeItem';
+import ModalHeader from './common/ModalHeader';
 
-import BodyScrollLock from './BodyScrollLock';
+import BodyScrollLock from '../../UI/modal/BodyScrollLock';
+import Modal from '../../UI/modal/Modal';
 
 const FinancialAgreeModal = (props) => {
   const [isVisible, setVisible] = useState(true);
   const [isAgree, setAgree] = useState(false);
-  const { lockScroll, unlockScroll } = BodyScrollLock();
-
-  const onModalClose = () => {
-    setVisible(false);
-    unlockScroll();
-  };
 
   const onAgreeCheckBoxChecked = () => {
     if (isAgree) {
@@ -23,13 +17,21 @@ const FinancialAgreeModal = (props) => {
     }
   };
 
+  const { lockScroll, unlockScroll } = BodyScrollLock();
+
+  useEffect(() => {
+    lockScroll();
+    return () => {
+      unlockScroll();
+    };
+  }, [lockScroll, unlockScroll]);
+
   return (
-    <>
-      <ModalMask isVisible={isVisible} />
-      <div className="lpop--wrap select-accept-terms default" style={isVisible ? { display: 'block' } : { display: 'none' }}>
+    <Modal>
+      <div className="lpop--wrap select-accept-terms default" style={{ display: 'block' }}>
         <div className="lpop-inner">
           <section className="select-lpop">
-            <ModalHeader onModalClose={onModalClose} />
+            <ModalHeader onModalClose={props.onModalClose} />
 
             <div className="lpop-cont">
               <h2 className="tit-20">
@@ -58,38 +60,8 @@ const FinancialAgreeModal = (props) => {
           </section>
         </div>
       </div>
-    </>
+    </Modal>
   );
 };
 
 export default FinancialAgreeModal;
-
-/**
- * 
- 
-// layer popup open
-function fnOpenLayer(layer){
-	var $mask = $('.lpop-mask'),
-		$lpop_wrap = $(layer),   
-		$lpop_cont = $(layer + ' .lpop-cont')  
-	$('body').addClass('stop-scroll');
-	$mask.show();
-	$lpop_wrap.show();	
-	$lpop_wrap.find('.lpop-cont').css('max-height', function(){
-		var contHeight = $(window).height() - 52;
-		$(layer + ' .lpop-header') ? contHeight = contHeight - $(layer + ' .lpop-header').outerHeight() : contHeight;
-		$(layer + ' .lpop-foot') ? contHeight = contHeight - $(layer + ' .lpop-foot').outerHeight() : contHeight;
-        return contHeight;
-    });
-}
-// layer popup close
-function fnCloseSelect() {
-	var $mask = $('.lpop-mask'),
-		$lpop_wrap = $('.select-lpop-wrap, .lpop--wrap');
-	$('body').removeClass('stop-scroll');
-	$('.select-value.curTrriger').removeClass('curTrriger');
-	$mask.hide();
-    $lpop_wrap.hide();
-}
- * 
- */

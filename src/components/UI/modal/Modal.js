@@ -8,8 +8,11 @@ const ModalOverlay = (props) => {
   return <>{props.children}</>;
 };
 
-const portalElement = document.getElementById('overlays');
+/*
+ backdrop과 modaloverlay가 root div  맨 아래 배치되어야 정상적으로 화면이 렌더링 됨.
+ */
 
+const portalElement = document.getElementById('overlays');
 const Modal = (props) => {
   return (
     <>

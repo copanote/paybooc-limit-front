@@ -1,37 +1,24 @@
-import { useEffect, useState } from 'react';
-import AmountItem from './AmountItem';
-
-import BodyScrollLock from './BodyScrollLock';
-import LimitChangeBox from './LimitChangeBox';
-import ModalHeader from './ModalHeader';
-import ModalMask from './ModalMask';
+import { useEffect } from 'react';
+import LimitChangeBox from './common/LimitChangeBox';
+import ModalHeader from './common/ModalHeader';
+import Modal from '../../UI/modal/Modal';
+import BodyScrollLock from '../../UI/modal/BodyScrollLock';
 
 const LimitRaiseModal = (props) => {
-  const [isVisible, setVisible] = useState(props.isOpen);
-  const [isAgree, setAgree] = useState(false);
   const { lockScroll, unlockScroll } = BodyScrollLock();
 
   useEffect(() => {
-    if (isVisible) lockScroll();
-
+    lockScroll();
     return () => {
       unlockScroll();
     };
-  });
-
-  const onModalClose = () => {
-    setVisible(false);
-    // unlockScroll();
-    props.onChangeLimitRaiseModalState();
-  };
-
+  }, [lockScroll, unlockScroll]);
   return (
-    <>
-      <ModalMask isVisible={isVisible} />
-      <div className="lpop--wrap lpop-limitChangeAgree" style={isVisible ? { display: 'block' } : { display: 'none' }}>
+    <Modal>
+      <div className="lpop--wrap lpop-limitChangeAgree" style={{ display: 'block' }}>
         <div className="lpop-inner">
           <section className="select-lpop">
-            <ModalHeader onModalClose={onModalClose} />
+            <ModalHeader onModalClose={props.onModalClose} />
 
             <div className="lpop-cont">
               <div className="limit-change-view">
@@ -57,7 +44,7 @@ const LimitRaiseModal = (props) => {
           </section>
         </div>
       </div>
-    </>
+    </Modal>
   );
 };
 
