@@ -10,8 +10,11 @@ import LimitSummary from '../components/Limit/Summary/LimitSummary';
 import Switch from '../components/UI/Switch/Switch';
 
 import LimitContext from '../store/limit-context';
+import AuthContext from '../store/auth-context';
 
 const LImitManagementBody = () => {
+  const ctx = useContext(AuthContext);
+  console.log(ctx.hasAccessToken);
   const { creditLimitInfo, cashserviceLimitInfo, cardloanLimitInfo, limitRaiseInfo } = useContext(LimitContext);
 
   const [isSwitchOn, setSwitchOn] = useState(false);
@@ -25,7 +28,7 @@ const LImitManagementBody = () => {
     <>
       <div className="my-vr01 manage-limit-area">
         <div className="sec --gray">
-          <div class="total-limit-manage">
+          <div className="total-limit-manage">
             <LimitHead isRaisable={limitRaiseInfo.isAvailable} limit={creditLimitInfo.limit} dateOfInquery={creditLimitInfo.dateOfInquery} />
             <LimitSummary />
             <LimitRaiseButton amount={'50000000'} />

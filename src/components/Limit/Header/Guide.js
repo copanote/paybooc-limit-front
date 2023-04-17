@@ -1,7 +1,6 @@
 import Tooltip from '../../UI/tooltip/Tooltip';
 
 const Guide = () => {
-  console.log('On Goide');
   return (
     <ul className="text-guide">
       <li>

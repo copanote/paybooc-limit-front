@@ -6,16 +6,19 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import LimitManagement from './pages/LImitManagement';
 import FinanceAgreementChange from './pages/FinanceAgreementChange';
+import { AuthContextProvider } from './store/auth-context';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<LimitManagement />} />
-        <Route path="/change" element={<FinanceAgreementChange />} />
-      </Routes>
-    </BrowserRouter>
+    <AuthContextProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<LimitManagement />} />
+          <Route path="/change" element={<FinanceAgreementChange />} />
+        </Routes>
+      </BrowserRouter>
+    </AuthContextProvider>
   </React.StrictMode>
 );
 

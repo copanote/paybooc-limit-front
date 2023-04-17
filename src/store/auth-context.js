@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import useHttp from '../hooks/use-Http';
+import useHttp from '../hooks/use-http';
 
 const AuthContext = React.createContext({
   hasAccessToken: false,
@@ -7,39 +7,31 @@ const AuthContext = React.createContext({
   onRequestAccessToekn: () => {},
 });
 
+export default AuthContext;
+
 export const AuthContextProvider = (props) => {
   const [hasAccessToken, setHasAccessToken] = useState(false);
-  const { isLoading, error, sendRequest: sendTaskRequest } = useHttp();
-  const enterTaskHandler = async () => {
-    // sendTaskRequest(
-    //   {
-    //     url: '',
-    //     method: 'GET',
-    //     headers: {
-    //       //   'Content-Type': 'application/json',
-    //     },
-    //     body: { text: taskText },
-    //   }
-    //   //   createTask.bind(null, taskText)
-    // );
-  };
+  const { isLoading, error, sendRequest: fetchAccessToken } = useHttp();
 
   useEffect(() => {
+    console.log('on AuthContextProvider:  ' + hasAccessToken);
     const storedAcessToekn = localStorage.getItem('accessToken');
     if (storedAcessToekn) {
       setHasAccessToken(true);
     } else {
+      console.log('fetch AccessToken');
+      const accessTokenTask = (data) => {
+        console.log(data);
+        localStorage.setItem('accessToken', data.accessToken);
+        setHasAccessToken(true);
+      };
+      fetchAccessToken({ url: '/app/paybooc/CreditLimit.do?exec=authorize&clientId=PAYBOOC08' }, accessTokenTask);
     }
-  }, []);
+  }, [fetchAccessToken]);
 
   const onClear = () => {
     localStorage.removeItem('accessToken');
     setHasAccessToken(false);
-  };
-
-  const onSaveAccessToeken = (accessToken) => {
-    localStorage.setItem('accessToken', accessToken);
-    setHasAccessToken(true);
   };
 
   //request http
@@ -63,5 +55,3 @@ export const AuthContextProvider = (props) => {
     </AuthContext.Provider>
   );
 };
-
-export default AuthContext;

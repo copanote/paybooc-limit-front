@@ -11,7 +11,7 @@ const CashServiceDetails = (props) => {
         <DetailItem title={'이용금액'} amount={usage} />
         <DetailItem title={'잔여이용한도'} amount={remain} isRemain={true} />
       </dl>
-      <button class="l-btn1">단기카드대출(현금서비스) 신청</button>
+      <button className="l-btn1">단기카드대출(현금서비스) 신청</button>
     </div>
   );
 };

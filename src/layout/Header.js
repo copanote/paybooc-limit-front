@@ -19,7 +19,7 @@ const Header = (props) => {
         뒤로
       </a>
 
-      <h1 class="tit">{title}</h1>
+      <h1 className="tit">{title}</h1>
       <a href="/" className="btn-close">
         닫기
       </a>
