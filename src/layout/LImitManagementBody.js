@@ -10,13 +10,9 @@ import LimitSummary from '../components/Limit/Summary/LimitSummary';
 import Switch from '../components/UI/Switch/Switch';
 
 import LimitContext from '../store/limit-context';
-import AuthContext from '../store/auth-context';
 
-const LImitManagementBody = () => {
-  const ctx = useContext(AuthContext);
-  console.log(ctx.hasAccessToken);
+const LImitManagementBody = (props) => {
   const { creditLimitInfo, cashserviceLimitInfo, cardloanLimitInfo, limitRaiseInfo } = useContext(LimitContext);
-
   const [isSwitchOn, setSwitchOn] = useState(false);
 
   const onChangeSwitchState = () => {

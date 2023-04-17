@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import LimitContext from './limit-context';
 
 const defaultState = {
@@ -27,6 +28,11 @@ const defaultState = {
 };
 
 const LimitProvider = (props) => {
+  useEffect(() => {}, []);
+  const onAgreeWithCardloan = () => {};
+  const onAgreeWithCashService = () => {};
+  const onAgreeWithCreditLimitRaiseNotice = () => {};
+
   return <LimitContext.Provider value={defaultState}>{props.children}</LimitContext.Provider>;
 };
 

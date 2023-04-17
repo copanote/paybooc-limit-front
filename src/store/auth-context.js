@@ -14,20 +14,19 @@ export const AuthContextProvider = (props) => {
   const { isLoading, error, sendRequest: fetchAccessToken } = useHttp();
 
   useEffect(() => {
-    console.log('on AuthContextProvider:  ' + hasAccessToken);
-    const storedAcessToekn = localStorage.getItem('accessToken');
-    if (storedAcessToekn) {
+    const storedAcessToken = localStorage.getItem('accessToken');
+    if (storedAcessToken) {
       setHasAccessToken(true);
     } else {
       console.log('fetch AccessToken');
-      const accessTokenTask = (data) => {
-        console.log(data);
-        localStorage.setItem('accessToken', data.accessToken);
-        setHasAccessToken(true);
-      };
-      fetchAccessToken({ url: '/app/paybooc/CreditLimit.do?exec=authorize&clientId=PAYBOOC08' }, accessTokenTask);
+      fetchAccessToken({ url: 'https://isrnd.bccard.com:34443/app/paybooc/CreditLimit.do?exec=authorize&clientId=PAYBOOC08' }, accessTokenTask);
     }
   }, [fetchAccessToken]);
+  const accessTokenTask = (data) => {
+    console.log(data);
+    localStorage.setItem('accessToken', data.accessToken);
+    setHasAccessToken(true);
+  };
 
   const onClear = () => {
     localStorage.removeItem('accessToken');
@@ -40,6 +39,9 @@ export const AuthContextProvider = (props) => {
       return localStorage.getItem('accessToken');
     } else {
       //reqeust http
+      fetchAccessToken({ url: 'https://isrnd.bccard.com:34443/app/paybooc/CreditLimit.do?exec=authorize&clientId=PAYBOOC08' }, accessTokenTask).then(() => {
+        return localStorage.getItem('accessToken');
+      });
     }
   };
 
