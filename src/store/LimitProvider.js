@@ -1,7 +1,8 @@
 import { useEffect } from 'react';
 import LimitContext from './limit-context';
+import useHttp from '../hooks/use-http';
 
-const defaultState = {
+let defaultState = {
   isAgreedWithLimitRaiseNotice: false,
   creditLimitInfo: {
     limit: '30000000',
@@ -28,12 +29,45 @@ const defaultState = {
 };
 
 const LimitProvider = (props) => {
-  useEffect(() => {}, []);
-  const onAgreeWithCardloan = () => {};
-  const onAgreeWithCashService = () => {};
-  const onAgreeWithCreditLimitRaiseNotice = () => {};
+  const { isLoading, error, sendRequest } = useHttp();
 
-  return <LimitContext.Provider value={defaultState}>{props.children}</LimitContext.Provider>;
+  useEffect(() => {
+    getCreditCashLimit();
+    getCardloanLimit();
+    getRaiseCreditLimitInfo();
+  }, []);
+
+  // const hasCreditLimitInfo = () => {};
+  // const hasCardloanLimit = () => {};
+  // const hasRaiseCreditLimitInfo = () => {};
+
+  // const getCreditCashLimit = () => {
+
+  //   const saveCreditLimitInfo = (data) => {
+  //     defaultState.cardloanLimitInfo = data.creditLimit;
+  //     defaultState.cashserviceLimitInfo = data.cashLimit;
+  //   }
+
+  //   sendRequest({ url: 'https://isrnd.bccard.com:34443/app/paybooc/CreditLimit.do?exec=authorize&clientId=PAYBOOC08' }, saveCreditLimitInfo);
+  // }
+
+  const getCreditCashLimit = () => {};
+  const getCardloanLimit = () => {};
+  const getRaiseCreditLimitInfo = () => {};
+
+  const agreeOnCardloan = () => {};
+  const agreeOnCashService = () => {};
+  const agreeOnRaiseNotice = () => {};
+  const disagreeOnRaiseNotice = () => {};
+  const changeAgreeAtOnce = () => {};
+
+  return (
+    <LimitContext.Provider
+      value={{ defaultState, getCreditCashLimit, getCardloanLimit, getRaiseCreditLimitInfo, agreeOnCardloan, agreeOnCashService, agreeOnRaiseNotice, disagreeOnRaiseNotice, changeAgreeAtOnce }}
+    >
+      {props.children}
+    </LimitContext.Provider>
+  );
 };
 
 export default LimitProvider;

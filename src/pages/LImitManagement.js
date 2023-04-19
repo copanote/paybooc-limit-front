@@ -1,14 +1,21 @@
-import { useState } from 'react';
-import Header from '../layout/Header';
+import { useState, useContext, useEffect } from 'react';
 import '../limit.css';
+import Header from '../layout/Header';
 import LImitManagementBody from '../layout/LImitManagementBody';
-import LimitProvider from '../store/LimitProvider';
 import LimitRaiseModal from '../components/Limit/ Modal/LimitRaiseModal';
 import FinancialAgreeModal from '../components/Limit/ Modal/FinancialAgreeModal';
 import TermsModal from '../components/Limit/ Modal/TermsModal';
 import LimitRaiseNoticeAgreeModal from '../components/Limit/ Modal/LimitRaiseNoticeAgreeModal';
+import LimitContext from '../store/limit-context';
 
 function LimitManagement() {
+  const {
+    defaultState: { creditLimitInfo, cashserviceLimitInfo, cardloanLimitInfo, limitRaiseInfo, isAgreedWithLimitRaiseNotice },
+    getCreditCashLimit,
+    getCardloanLimit,
+    getRaiseCreditLimitInfo,
+  } = useContext(LimitContext);
+
   const [limitRaiseModalIsShown, setLimitRaiseModalIsShown] = useState(false);
   const [finalcialAgreeModalIsShown, setFinancialAgreeModalIsShown] = useState(false);
   const [termsModalIsShown, setTermsModalIsShown] = useState(false);
@@ -27,14 +34,14 @@ function LimitManagement() {
   };
 
   return (
-    <LimitProvider>
+    <>
       <Header title={'이용한도관리'} />
       <LImitManagementBody />
       {limitRaiseModalIsShown && <LimitRaiseModal onModalClose={onLimitRaiseModalCloseHandler} />}
       {finalcialAgreeModalIsShown && <FinancialAgreeModal onModalClose={onFinancialAgreeModalCloseHandler} />}
       {termsModalIsShown && <TermsModal onModalClose={onTermsModalCloseHandler} />}
       {limitRaiseNoticeAgreeModalIsShown && <LimitRaiseNoticeAgreeModal onModalClose={onLimitRaiseNoticeAgreeModalCloseHandler} />}
-    </LimitProvider>
+    </>
   );
 }
 

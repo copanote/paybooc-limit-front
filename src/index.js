@@ -7,17 +7,20 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import LimitManagement from './pages/LImitManagement';
 import FinanceAgreementChange from './pages/FinanceAgreementChange';
 import { AuthContextProvider } from './store/auth-context';
+import LimitProvider from './store/LimitProvider';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <AuthContextProvider>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<LimitManagement />} />
-          <Route path="/change" element={<FinanceAgreementChange />} />
-        </Routes>
-      </BrowserRouter>
+      <LimitProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<LimitManagement />} />
+            <Route path="/change" element={<FinanceAgreementChange />} />
+          </Routes>
+        </BrowserRouter>
+      </LimitProvider>
     </AuthContextProvider>
   </React.StrictMode>
 );

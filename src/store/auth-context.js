@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import useHttp from '../hooks/use-http';
 
 const AuthContext = React.createContext({
@@ -28,22 +28,25 @@ export const AuthContextProvider = (props) => {
     setHasAccessToken(true);
   };
 
-  const onClear = () => {
+  const onClear = useCallback(() => {
     localStorage.removeItem('accessToken');
     setHasAccessToken(false);
-  };
+  }, []);
 
   //request http
-  const onRequestAccessToekn = () => {
-    if (hasAccessToken) {
-      return localStorage.getItem('accessToken');
-    } else {
-      //reqeust http
-      fetchAccessToken({ url: 'https://isrnd.bccard.com:34443/app/paybooc/CreditLimit.do?exec=authorize&clientId=PAYBOOC08' }, accessTokenTask).then(() => {
+  const onRequestAccessToekn = useCallback(
+    (hasAccessToken) => {
+      if (hasAccessToken) {
         return localStorage.getItem('accessToken');
-      });
-    }
-  };
+      } else {
+        //reqeust http
+        fetchAccessToken({ url: 'https://isrnd.bccard.com:34443/app/paybooc/CreditLimit.do?exec=authorize&clientId=PAYBOOC08' }, accessTokenTask).then(() => {
+          return localStorage.getItem('accessToken');
+        });
+      }
+    },
+    [fetchAccessToken]
+  );
 
   return (
     <AuthContext.Provider

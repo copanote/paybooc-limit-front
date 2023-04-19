@@ -12,8 +12,11 @@ import Switch from '../components/UI/Switch/Switch';
 import LimitContext from '../store/limit-context';
 
 const LImitManagementBody = (props) => {
-  const { creditLimitInfo, cashserviceLimitInfo, cardloanLimitInfo, limitRaiseInfo } = useContext(LimitContext);
-  const [isSwitchOn, setSwitchOn] = useState(false);
+  const {
+    defaultState: { creditLimitInfo, cashserviceLimitInfo, cardloanLimitInfo, limitRaiseInfo, isAgreedWithLimitRaiseNotice },
+    aa,
+  } = useContext(LimitContext);
+  const [isSwitchOn, setSwitchOn] = useState(isAgreedWithLimitRaiseNotice);
 
   const onChangeSwitchState = () => {
     setSwitchOn((isSwitchOn) => !isSwitchOn);
@@ -25,9 +28,9 @@ const LImitManagementBody = (props) => {
       <div className="my-vr01 manage-limit-area">
         <div className="sec --gray">
           <div className="total-limit-manage">
-            <LimitHead isRaisable={limitRaiseInfo.isAvailable} limit={creditLimitInfo.limit} dateOfInquery={creditLimitInfo.dateOfInquery} />
+            <LimitHead isRaisable={limitRaiseInfo.isRaisable} limit={creditLimitInfo.limit} dateOfInquery={creditLimitInfo.dateOfInquery} />
             <LimitSummary />
-            <LimitRaiseButton amount={'50000000'} />
+            {limitRaiseInfo.isRaisable && <LimitRaiseButton amount={'50000000'} />}
             <Switch isOn={isSwitchOn} onChangeSwitchState={onChangeSwitchState} onText={'한도상향 알림을 받고 있어요'} offText={'한도가 늘어나면 알림받기'} />
           </div>
         </div>
