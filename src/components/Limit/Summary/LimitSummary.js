@@ -1,7 +1,11 @@
+import { useContext } from 'react';
 import LimitSummaryItem from './LimitSummaryItem';
+import LimitContext from '../../../store/limit-context';
 
-const LimitSummary = (props) => {
-  const { creditLimitInfo, cashServiceInfo, cardLoanInfo } = props;
+const LimitSummary = () => {
+  const {
+    state: { creditLimitInfo, cashserviceLimitInfo, cardloanLimitInfo },
+  } = useContext(LimitContext);
 
   return (
     <ul className="total-limit-summery">
@@ -13,22 +17,16 @@ const LimitSummary = (props) => {
       </li>
       <li>
         <div>단기카드대출(현금서비스)</div>
-        {cashServiceInfo.agree && <LimitSummaryItem limit={cashServiceInfo.limit} isApproximate={false} />}
-        {!cashServiceInfo.agree && <button class="btn-limit">한도보기</button>}
+        {cashserviceLimitInfo.agreed && <LimitSummaryItem limit={cashserviceLimitInfo.limit} isApproximate={false} />}
+        {!cashserviceLimitInfo.agreed && <button class="btn-limit">한도보기</button>}
       </li>
       <li>
         <div>장기카드대출(카드론)</div>
-        {cardLoanInfo.agree && <LimitSummaryItem limit={cardLoanInfo.limit} isApproximate={true} />}
-        {!cardLoanInfo.agree && <button class="btn-limit">한도보기</button>}
+        {cardloanLimitInfo.agreed && <LimitSummaryItem limit={cardloanLimitInfo.limit} isApproximate={true} />}
+        {!cardloanLimitInfo.agreed && <button class="btn-limit">한도보기</button>}
       </li>
     </ul>
   );
-};
-
-LimitSummary.defaultProps = {
-  creditLimitInfo: { limit: '6000000' },
-  cashServiceInfo: { agree: true, limit: '1000000' },
-  cardLoanInfo: { agree: true, limit: '30000000' },
 };
 
 export default LimitSummary;

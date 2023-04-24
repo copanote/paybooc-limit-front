@@ -6,16 +6,8 @@ import LimitRaiseModal from '../components/Limit/ Modal/LimitRaiseModal';
 import FinancialAgreeModal from '../components/Limit/ Modal/FinancialAgreeModal';
 import TermsModal from '../components/Limit/ Modal/TermsModal';
 import LimitRaiseNoticeAgreeModal from '../components/Limit/ Modal/LimitRaiseNoticeAgreeModal';
-import LimitContext from '../store/limit-context';
 
 function LimitManagement() {
-  const {
-    defaultState: { creditLimitInfo, cashserviceLimitInfo, cardloanLimitInfo, limitRaiseInfo, isAgreedWithLimitRaiseNotice },
-    getCreditCashLimit,
-    getCardloanLimit,
-    getRaiseCreditLimitInfo,
-  } = useContext(LimitContext);
-
   const [limitRaiseModalIsShown, setLimitRaiseModalIsShown] = useState(false);
   const [finalcialAgreeModalIsShown, setFinancialAgreeModalIsShown] = useState(false);
   const [termsModalIsShown, setTermsModalIsShown] = useState(false);

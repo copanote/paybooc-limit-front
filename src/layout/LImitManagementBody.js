@@ -13,13 +13,22 @@ import LimitContext from '../store/limit-context';
 
 const LImitManagementBody = (props) => {
   const {
-    defaultState: { creditLimitInfo, cashserviceLimitInfo, cardloanLimitInfo, limitRaiseInfo, isAgreedWithLimitRaiseNotice },
-    aa,
+    state: { creditLimitInfo, cashserviceLimitInfo, cardloanLimitInfo, limitRaiseInfo, isAgreedWithLimitRaiseNotice },
+    action: { onRequestInitData, agreeOnRaiseNotice, disagreeOnRaiseNotice },
   } = useContext(LimitContext);
-  const [isSwitchOn, setSwitchOn] = useState(isAgreedWithLimitRaiseNotice);
+  // const [isSwitchOn, setSwitchOn] = useState(isAgreedWithLimitRaiseNotice);
+
+  useEffect(() => {
+    onRequestInitData();
+  }, []);
 
   const onChangeSwitchState = () => {
-    setSwitchOn((isSwitchOn) => !isSwitchOn);
+    if (isAgreedWithLimitRaiseNotice) {
+      disagreeOnRaiseNotice();
+    } else {
+      agreeOnRaiseNotice();
+    }
+    // setSwitchOn((isSwitchOn) => !isSwitchOn);
     // toastPopupAlert('한도상향 알림이 해지되었습니다.');
   };
 
@@ -29,15 +38,15 @@ const LImitManagementBody = (props) => {
         <div className="sec --gray">
           <div className="total-limit-manage">
             <LimitHead isRaisable={limitRaiseInfo.isRaisable} limit={creditLimitInfo.limit} dateOfInquery={creditLimitInfo.dateOfInquery} />
-            <LimitSummary />
-            {limitRaiseInfo.isRaisable && <LimitRaiseButton amount={'50000000'} />}
-            <Switch isOn={isSwitchOn} onChangeSwitchState={onChangeSwitchState} onText={'한도상향 알림을 받고 있어요'} offText={'한도가 늘어나면 알림받기'} />
+            <LimitSummary creditLimitInfo={creditLimitInfo} cashserviceLimitInfo={cashserviceLimitInfo} cardLoanInfo={cardloanLimitInfo} />
+            {limitRaiseInfo.isRaisable && <LimitRaiseButton amount={limitRaiseInfo.availableCreditLimitAmount} />}
+            <Switch isOn={isAgreedWithLimitRaiseNotice} onChangeSwitchState={onChangeSwitchState} onText={'한도상향 알림을 받고 있어요'} offText={'한도가 늘어나면 알림받기'} />
           </div>
         </div>
 
         <div className="sec">
           <div className="etc-limit-manage">
-            <CreditLimitDetails limit={creditLimitInfo.limit} usage={creditLimitInfo.usage} remain={creditLimitInfo.remain} />
+            <CreditLimitDetails limit={creditLimitInfo.limit} usage={creditLimitInfo.usage} remain={creditLimitInfo.remain} isRaisable={limitRaiseInfo.isRaisable} />
             <CashServiceDetails limit={cashserviceLimitInfo.limit} usage={cashserviceLimitInfo.usage} remain={cashserviceLimitInfo.remain} />
             <CardloanDetails limit={cardloanLimitInfo.limit} rate={cardloanLimitInfo.rate} />
             <Links />
