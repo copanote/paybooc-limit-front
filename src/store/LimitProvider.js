@@ -53,59 +53,116 @@ const LimitReducer = (state, action) => {
 const LimitProvider = (props) => {
   const [isAgreedWithLimitRaiseNotice, setIsAgreedWithLimitRaiseNotice] = useState(false);
   const [creditLimitInfo, setCreditLimitInfo] = useState({
-    limit: '30000000',
-    usage: '10000000',
-    remain: '20000000',
+    limit: '',
+    usage: '',
+    remain: '',
     dateOfInquery: new Date().toLocaleDateString(),
   });
 
   const [cashserviceLimitInfo, setCashserviceLimitInfo] = useState({
     agreed: true,
-    limit: '30000000',
-    usage: '10000000',
-    remain: '20000000',
+    limit: '',
+    usage: '',
+    remain: '',
   });
 
   const [cardloanLimitInfo, setCardloanLimitInfo] = useState({
     agreed: true,
-    limit: '30000000',
-    rate: '11.1',
+    limit: '',
+    rate: '',
   });
 
   const [limitRaiseInfo, setLimitRaiseInfo] = useState({
     isRaisable: true,
-    availableCreditLimitAmount: '50000000',
-    availableCashserviceAmount: '100000000',
+    availableCreditLimitAmount: '',
+    availableCashserviceAmount: '',
   });
 
-  const { isLoading, error, sendRequest } = useHttp();
+  const { isLoading, error, sendRequest: fetchCreditCashLimit } = useHttp();
+  const { sendRequest: fetchCardloanLimit } = useHttp();
+  const { sendRequest: fetchRaiseCreditLimitInfo } = useHttp();
+
+  useEffect(() => {
+    console.log('LImitManagementBody UseEffect');
+    onRequestInitData();
+  }, []);
 
   const onRequestInitData = () => {
-    setCreditLimitInfo((prev) => {
-      return {
-        limit: '90000000',
-        usage: '90000000',
-        remain: '90000000',
-        dateOfInquery: new Date().toLocaleDateString(),
-      };
-    });
+    console.log('onRequestInitData');
+    const fetchCreditCashLimitTask = (data) => {
+      setCreditLimitInfo((prev) => {
+        return {
+          limit: data.creditLimit.limit,
+          usage: data.creditLimit.usage,
+          remain: data.creditLimit.remain,
+          dateOfInquery: data.creditLimit.dateOfInquery,
+        };
+      });
+      setCashserviceLimitInfo(() => {
+        return {
+          agreed: data.cashLimit.agreed,
+          limit: data.cashLimit.limit,
+          usage: data.cashLimit.usage,
+          remain: data.cashLimit.remain,
+        };
+      });
+    };
 
-    setCashserviceLimitInfo((prev) => {
-      return {
-        agreed: true,
-        limit: '40000000',
-        usage: '40000000',
-        remain: '40000000',
-      };
-    });
+    fetchCreditCashLimit(
+      {
+        url: '/app/paybooc/CreditLimit.do?exec=getCreditCashLimit',
+        method: 'GET',
+        headers: {
+          Authorization: 'Bearer UEFZQk9PQzA3',
+          Accept: '*/*',
+        },
+      },
+      fetchCreditCashLimitTask
+    );
 
-    setCardloanLimitInfo((prev) => {
-      return {
-        agreed: true,
-        limit: '70000000',
-        rate: '22.2',
-      };
-    });
+    const fetchCardloanLimitTask = (data) => {
+      setCardloanLimitInfo((prev) => {
+        return {
+          agreed: data.agreed,
+          limit: data.limit,
+          rate: data.ratio,
+        };
+      });
+    };
+
+    fetchCardloanLimit(
+      {
+        url: '/app/paybooc/CreditLimit.do?exec=getCardloanLimit',
+        method: 'GET',
+        headers: {
+          Authorization: 'Bearer UEFZQk9PQzA3',
+          Accept: '*/*',
+        },
+      },
+      fetchCardloanLimitTask
+    );
+
+    const fetchRaiseCreditLimitInfoTask = (data) => {
+      setLimitRaiseInfo((prev) => {
+        return {
+          isRaisable: data.isAvailable,
+          availableCreditLimitAmount: data.availableTotalLimit,
+          availableCashserviceAmount: data.availableCashService,
+        };
+      });
+    };
+
+    fetchRaiseCreditLimitInfo(
+      {
+        url: '/app/paybooc/CreditLimit.do?exec=getRaiseCreditLimitInfo',
+        method: 'GET',
+        headers: {
+          Authorization: 'Bearer UEFZQk9PQzA3',
+          Accept: '*/*',
+        },
+      },
+      fetchRaiseCreditLimitInfoTask
+    );
 
     setIsAgreedWithLimitRaiseNotice(true);
   };

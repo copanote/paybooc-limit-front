@@ -12,15 +12,12 @@ import Switch from '../components/UI/Switch/Switch';
 import LimitContext from '../store/limit-context';
 
 const LImitManagementBody = (props) => {
+  console.log('LImitManagementBody');
   const {
     state: { creditLimitInfo, cashserviceLimitInfo, cardloanLimitInfo, limitRaiseInfo, isAgreedWithLimitRaiseNotice },
     action: { onRequestInitData, agreeOnRaiseNotice, disagreeOnRaiseNotice },
   } = useContext(LimitContext);
   // const [isSwitchOn, setSwitchOn] = useState(isAgreedWithLimitRaiseNotice);
-
-  useEffect(() => {
-    onRequestInitData();
-  }, []);
 
   const onChangeSwitchState = () => {
     if (isAgreedWithLimitRaiseNotice) {

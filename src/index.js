@@ -11,18 +11,18 @@ import LimitProvider from './store/LimitProvider';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <AuthContextProvider>
-      <LimitProvider>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<LimitManagement />} />
-            <Route path="/change" element={<FinanceAgreementChange />} />
-          </Routes>
-        </BrowserRouter>
-      </LimitProvider>
-    </AuthContextProvider>
-  </React.StrictMode>
+  // <React.StrictMode>
+  <AuthContextProvider>
+    <LimitProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<LimitManagement />} />
+          <Route path="/change" element={<FinanceAgreementChange />} />
+        </Routes>
+      </BrowserRouter>
+    </LimitProvider>
+  </AuthContextProvider>
+  // </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function
