@@ -5,7 +5,7 @@ const LimitDetails = (props) => {
 
   return (
     <div className="limit-info">
-      <p className="l-tit">단기카드대출 (현금서비스)</p>
+      <p className="l-tit">일시불·할부</p>
       <dl className="l-list">
         <DetailItem title={'현재한도'} amount={limit} />
         <DetailItem title={'이용금액'} amount={usage} />

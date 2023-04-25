@@ -1,18 +1,21 @@
 const AgreeItem = (props) => {
-  const { title, termId } = props;
+  const { title, termId, isChecked, onCheckboxChangeHandler } = props;
+
+  const onChangeHandler = () => {
+    onCheckboxChangeHandler();
+  };
 
   return (
     <>
       <div className="c-item">
-        <span>
-          <input type="checkbox" className="re-chk-sb" id="agr-terms-3" />
-          <label for="agr-terms-3">{title}</label>
+        <span onClick={onChangeHandler}>
+          <input type="checkbox" className="re-chk-sb" checked={isChecked} />
+          <label htmlFor="agr-terms-3">{title}</label>
         </span>
-        <a href="javascript:void(0)" className="termsTitle-this">
+        <a href={() => false} className="termsTitle-this" onClick={onChangeHandler}>
           {title}
         </a>
       </div>
-      {/* <TermsModal /> */}
     </>
   );
 };

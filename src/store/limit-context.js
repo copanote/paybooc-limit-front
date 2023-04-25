@@ -7,7 +7,7 @@ const LimitContext = React.createContext({
       limit: 0,
       usage: 0,
       remain: 0,
-      dateOfInquery: new Date().toLocaleDateString(),
+      dateOfInquiry: new Date().toLocaleDateString(),
     },
     cashserviceLimitInfo: {
       agreed: true,

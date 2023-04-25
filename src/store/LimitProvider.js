@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react';
-import LimitContext from './limit-context';
+import { useContext, useEffect, useState } from 'react';
 import useHttp from '../hooks/use-http';
+import LimitContext from './limit-context';
+import ModalContext from './modal-context';
 
 const initailState = {
   state: {
@@ -9,7 +10,7 @@ const initailState = {
       limit: '30000000',
       usage: '10000000',
       remain: '20000000',
-      dateOfInquery: new Date().toLocaleDateString(),
+      dateOfInquiry: new Date().toLocaleDateString(),
     },
     cashserviceLimitInfo: {
       agreed: true,
@@ -51,12 +52,12 @@ const LimitReducer = (state, action) => {
 };
 
 const LimitProvider = (props) => {
-  const [isAgreedWithLimitRaiseNotice, setIsAgreedWithLimitRaiseNotice] = useState(false);
+  const [isAgreedWithLimitRaiseNotice, setIsAgreedWithLimitRaiseNotice] = useState(true);
   const [creditLimitInfo, setCreditLimitInfo] = useState({
     limit: '',
     usage: '',
     remain: '',
-    dateOfInquery: new Date().toLocaleDateString(),
+    dateOfInquiry: new Date().toLocaleDateString(),
   });
 
   const [cashserviceLimitInfo, setCashserviceLimitInfo] = useState({
@@ -81,13 +82,16 @@ const LimitProvider = (props) => {
   const { isLoading, error, sendRequest: fetchCreditCashLimit } = useHttp();
   const { sendRequest: fetchCardloanLimit } = useHttp();
   const { sendRequest: fetchRaiseCreditLimitInfo } = useHttp();
+  const { sendRequest: fetchAgreeOnRaiseNotice } = useHttp();
+  const { sendRequest: fetchDisagreeOnRaiseNotice } = useHttp();
+  const { sendRequest: fetchAgreeCardloanLimit } = useHttp();
 
   useEffect(() => {
     console.log('LImitManagementBody UseEffect');
     onRequestInitData();
   }, []);
 
-  const onRequestInitData = () => {
+  const onRequestInitData = async () => {
     console.log('onRequestInitData');
     const fetchCreditCashLimitTask = (data) => {
       setCreditLimitInfo((prev) => {
@@ -95,7 +99,7 @@ const LimitProvider = (props) => {
           limit: data.creditLimit.limit,
           usage: data.creditLimit.usage,
           remain: data.creditLimit.remain,
-          dateOfInquery: data.creditLimit.dateOfInquery,
+          dateOfInquiry: data.creditLimit.dateOfInquiry,
         };
       });
       setCashserviceLimitInfo(() => {
@@ -106,6 +110,7 @@ const LimitProvider = (props) => {
           remain: data.cashLimit.remain,
         };
       });
+      setIsAgreedWithLimitRaiseNotice(data.agreedWithRaiseLimitNotice);
     };
 
     fetchCreditCashLimit(
@@ -163,23 +168,64 @@ const LimitProvider = (props) => {
       },
       fetchRaiseCreditLimitInfoTask
     );
-
-    setIsAgreedWithLimitRaiseNotice(true);
   };
 
   const getCreditCashLimit = () => {};
   const getCardloanLimit = () => {};
   const getRaiseCreditLimitInfo = () => {};
 
-  const agreeOnCardloan = () => {};
+  const agreeOnCardloan = () => {
+    const fetchCardloanLimitTask = (data) => {
+      setCardloanLimitInfo((prev) => {
+        return {
+          agreed: data.agreed,
+          limit: data.limit,
+          rate: data.ratio,
+        };
+      });
+    };
+
+    fetchAgreeCardloanLimit(
+      {
+        url: '/app/paybooc/CreditLimit.do?exec=agreeOnCardloan',
+        method: 'GET',
+        headers: {
+          Authorization: 'Bearer UEFZQk9PQzA3',
+          Accept: '*/*',
+        },
+      },
+      fetchCardloanLimitTask
+    );
+  };
   const agreeOnCashService = () => {};
 
-  const agreeOnRaiseNotice = () => {
-    console.log('agreeOnRaiseNotice');
-    setIsAgreedWithLimitRaiseNotice(true);
+  const agreeOnRaiseNotice = async () => {
+    fetchAgreeOnRaiseNotice(
+      {
+        url: '/app/paybooc/CreditLimit.do?exec=agreeOnRaiseNotice',
+        method: 'GET',
+        headers: {
+          Authorization: 'Bearer UEFZQk9PQzA3',
+        },
+      },
+      () => {
+        setIsAgreedWithLimitRaiseNotice(true);
+      }
+    );
   };
   const disagreeOnRaiseNotice = () => {
-    setIsAgreedWithLimitRaiseNotice(false);
+    fetchDisagreeOnRaiseNotice(
+      {
+        url: '/app/paybooc/CreditLimit.do?exec=disagreeOnRaiseNotice',
+        method: 'GET',
+        headers: {
+          Authorization: 'Bearer UEFZQk9PQzA3',
+        },
+      },
+      () => {
+        setIsAgreedWithLimitRaiseNotice(false);
+      }
+    );
   };
 
   const changeAgreeAtOnce = () => {};
@@ -199,7 +245,7 @@ const LimitProvider = (props) => {
           getCreditCashLimit: () => {},
           getCardloanLimit: () => {},
           getRaiseCreditLimitInfo: () => {},
-          agreeOnCardloan: () => {},
+          agreeOnCardloan: agreeOnCardloan,
           agreeOnCashService: () => {},
           agreeOnRaiseNotice: agreeOnRaiseNotice,
           disagreeOnRaiseNotice: disagreeOnRaiseNotice,
