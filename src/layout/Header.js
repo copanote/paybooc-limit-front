@@ -10,7 +10,7 @@ const Header = (props) => {
   return (
     <header className="renew01-header my-card-header01">
       <a
-        href="javascript:void(0)"
+        href={() => false}
         onClick={() => {
           navigate(-1);
         }}

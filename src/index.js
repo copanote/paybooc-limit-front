@@ -3,29 +3,12 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import LimitManagement from './pages/LImitManagement';
-import FinanceAgreementChange from './pages/FinanceAgreementChange';
-import { AuthContextProvider } from './store/auth-context';
-import LimitProvider from './store/LimitProvider';
-import { ModalContextProvider } from './store/modal-context';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
+  <App />
   // <React.StrictMode>
   //
-  <AuthContextProvider>
-    <LimitProvider>
-      <ModalContextProvider>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<LimitManagement />} />
-            <Route path="/change" element={<FinanceAgreementChange />} />
-          </Routes>
-        </BrowserRouter>
-      </ModalContextProvider>
-    </LimitProvider>
-  </AuthContextProvider>
 
   // </React.StrictMode>
 );
